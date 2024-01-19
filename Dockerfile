@@ -25,7 +25,7 @@ COPY . /workspace/ai-builder/
 USER gitpod
 RUN pip install --upgrade pip && \
     python3 -m pip install -U -r /workspace/ai-builder/requirements.txt && \
-    rm /workspace/ai-builder/requirements.txtß
+    rm /workspace/ai-builder/requirements.txt
 
 ########################
 ########################
