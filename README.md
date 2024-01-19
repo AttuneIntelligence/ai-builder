@@ -1,13 +1,13 @@
-## AI Builder
+# AI Builder
 **by [Attune Engineering](https://attuneengineering.com/)**
 #### Maintained by _[Reed Bender](https://reedbender.com/)_
 For support, either add an issue or email us at contact@attuneengineering.com
 
 ---
 
-[![Build Status](https://github.com/Attune-Engineering/ai-builder/actions/workflows/main.yml/badge.svg)](https://github.com/Attune-Engineering/ai-builder/actions)
+[![Build Status](https://github.com/AttuneEngineering/ai-builder/actions/workflows/main.yml/badge.svg)](https://github.com/AttuneEngineering/ai-builder/actions)
 ---
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/Attune-Engineering/ai-builder)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder)
 
 ## Setting up Github Actions
 *Need to set secrets for workspace image to be built with code commits* 
