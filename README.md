@@ -40,6 +40,16 @@
 
 We've containerized the complete development environment for interfacing with Generative AI models, templatized the configurations necessary for provisioning GPUs on <a href="https://runpod.io?ref=zdeyr0zx">Runpod</a> and made it easy for new users to get up with all the necessary package installations at the click of a button. Simply launch the `AI Builder` Docker container and get a fully configured environment with Jupyter to get you writing code in minutes.
 
+### Developing with [Gitpod](https://www.gitpod.io/docs/configure/workspaces/)
+
+Attune Engineering configures all of our repositories to work with Gitpod, enabling seamless version control and dependency management across software architectures. This is a great option for those who don't want to install Docker on their local machine, or who want to develop from a Chromebook or other device that doesn't support Docker. You are granted a free 50 hours of development per month, which is more than enough to get started.
+
+<div align="center">
+    <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
+</div>
+
+_note_... Gitpod also allows you to manage your collection of API keys as project-level secrets, which can be configured in Projects --> Settings --> Variables. 
+
 ### Running on your local machine
 
 1. Install [Docker](https://docs.docker.com/get-docker/) on your machine if it is not already installed.
@@ -69,15 +79,7 @@ We've containerized the complete development environment for interfacing with Ge
     ```
     You're now ready to begin working within the interactive Docker CLI, or otherwise access Jupyter Lab at `http://localhost:8888`.
 
-5. Configure your secrets as environment variables.
-    ```bash
-    export GITHUB_TOKEN="xxx"
-    export OPENAI_API_KEY="xxx"
-    export SERPAPI_API_KEY="xxx"
-    ```
-    This can also be done using the Python [dotenv](https://configu.com/blog/using-py-dotenv-python-dotenv-package-to-manage-env-variables/) package.
-
-6. _optional_ Push the Docker image to your own Github Container Registry.
+5. _optional_ Push the Docker image to your own Github Container Registry.
     This will require you to have a Github account and a personal access token with `read:packages` and `write:packages` permissions. You can create a token [here](https://github.com/settings/tokens). Note that you'll also need to either fork the `AI Builder` repository or create a new repository in your own account.
     ```bash
     export GITHUB_TOKEN="xxx" 
@@ -93,15 +95,15 @@ We've containerized the complete development environment for interfacing with Ge
     ```
     `GITHUB_TOKEN` is already managed by the Github actions we are triggering with `.github/workflows/main.yml`, so it does not need to be added in addition.
 
-### Developing with [Gitpod](https://www.gitpod.io/docs/configure/workspaces/)
-
-Attune Engineering configures all of our repositories to work with Gitpod, enabling seamless version control and dependency management across software architectures. This is a great option for those who don't want to install Docker on their local machine, or who want to develop from a Chromebook or other device that doesn't support Docker. You are granted a free 50 hours of development per month, which is more than enough to get started.
-
-<div align="center">
-    <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
-</div>
-
-_note_ Gitpod also allows you to manage your collection of API keys as project-level secrets, which can be configured in Projects --> Settings --> Variables. 
-
 ---
 
+## USING THE CODE
+
+#### Setting Environment Variables
+API keys are managed as environment variabled in your local environment. These should be set prior to running a jupyter server or executing any scripts.
+  ```bash
+  export GITHUB_TOKEN="xxx"
+  export OPENAI_API_KEY="xxx"
+  export SERPAPI_API_KEY="xxx"
+  ```
+_note_... this can also be done using the Python [dotenv](https://configu.com/blog/using-py-dotenv-python-dotenv-package-to-manage-env-variables/) package.
