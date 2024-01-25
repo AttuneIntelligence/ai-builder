@@ -39,9 +39,9 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            {{ secrets.REGISTRY_IMAGE }}:main-${{ env.CURRENT_DATE }}
-            {{ secrets.REGISTRY_IMAGE }}:main
+            ${{ secrets.REGISTRY_IMAGE }}:main-${{ env.CURRENT_DATE }}
+            ${{ secrets.REGISTRY_IMAGE }}:main
           cache-from: |
-            type=registry,ref={{ secrets.REGISTRY_IMAGE }}:main
+            type=registry,ref=${{ secrets.REGISTRY_IMAGE }}:main
           cache-to: |
             type=inline
