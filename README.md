@@ -1,7 +1,6 @@
 
 <div align="center">
     <h1>AI Builder</h1>
-    <h4><em>built and maintained by <a href="">Reed Bender</a></em></h4>
 </div>
 
 <div align="center">
@@ -37,17 +36,17 @@
 
 ---
 
-## RUNNING THE CODE
+## BUILDING YOUR ENVIRONMENT
 
-### Developing with Gitpod
+### (a) Developing with Gitpod
 
-Attune Engineering configures all of our repositories to work with [Gitpod](https://www.gitpod.io/docs/configure/workspaces), enabling your to deploy a preconfigured development environment to provisioned cloud resources. You are granted a free 50 hours of development per month, which is more than enough to get started.
+Attune Engineering configures all of our repositories to work with [Gitpod](https://www.gitpod.io/docs/configure/workspaces), enabling you to deploy a preconfigured development environment to provisioned cloud resources. You are granted a free 50 hours of development per month, which is more than enough to get started.
 
 <div align="center">
     <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
 </div>
 
-### Running on your local machine
+### (b) Running Docker on your local machine
 
 1. Install [Docker](https://docs.docker.com/get-docker/) on your machine if it is not already installed.
 
@@ -60,10 +59,11 @@ Attune Engineering configures all of our repositories to work with [Gitpod](http
 3. Build the Docker image yourself _OR_ pull the image from Attune Engineering.
     ```bash
     ### BUILD FROM SOURCE...
-    export REGISTRY_IMAGE="ghcr.io/attuneengineering/ai-builder"
+    export REGISTRY_IMAGE="YOUR_GITHUB_USERNAME/ai-builder"
     docker build -f Dockerfile -t $REGISTRY_IMAGE:main .
 
-    ### ...OR PULL FROM ATTUNE ENGINEERING
+    ### ...OR PULL FROM ATTUNE ENGINEERING\'S GITHUB CONTAINER REGISTRY
+    export REGISTRY_IMAGE="ghcr.io/attuneengineering/ai-builder"
     docker pull $REGISTRY_IMAGE:main
     ```
 
@@ -77,7 +77,7 @@ Attune Engineering configures all of our repositories to work with [Gitpod](http
     You're now ready to begin working within the interactive Docker CLI, or otherwise access Jupyter Lab at `http://localhost:8888`.
 
 5. _optional_ Push the Docker image to your own Github Container Registry.
-    This will require you to have a Github account and a personal access token with `read:packages` and `write:packages` permissions. You can create a token [here](https://github.com/settings/tokens). Note that you'll also need to either fork the `AI Builder` repository or create a new repository in your own account.
+    This will require you to have a personal access token with `read:packages` and `write:packages` permissions. You can create a token [here](https://github.com/settings/tokens). Note that you'll also need to either fork the `AI Builder` repository or create a new repository in your own account.
     ```bash
     export GITHUB_TOKEN="xxx" 
     export REGISTRY_IMAGE="ghcr.io/YOUR_GITHUB_USERNAME/ai-builder"
@@ -85,22 +85,29 @@ Attune Engineering configures all of our repositories to work with [Gitpod](http
     echo $GITHUB_TOKEN | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
     docker push $REGISTRY_IMAGE:main
     ```
+    _note_... Your `GITHUB_TOKEN`` is already managed by the Github actions we are triggering with ``.github/workflows/main.yml`, so it does not need to be added in addition.
 
     Additionally, this process can be automated with Github Actions. In order for the Github Workflows to successfully build the image and push it to your Github Container Registry, you must add the following to your `Repository Settings` --> `Secrets and Variables` --> `Actions` --> `Repository Secrets`...
     ```
     REGISTRY_IMAGE="ghcr.io/YOUR_GITHUB_USERNAME/ai-builder"
     ```
-    `GITHUB_TOKEN` is already managed by the Github actions we are triggering with `.github/workflows/main.yml`, so it does not need to be added in addition.
+
+### (c) Building the environment locally
+
+This is not ideal, as all of the source code is organized relative to the container's home directory within (`/workspace/ai-builder/src`). If you're simply looking to adapt the code to your own purposes, however, you can simply install the necessary requirements and update the `PYTHONPATH` to point to your `src` directory.
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 ---
 
-## USING THE CODE
+## NEXT STEPS...
 
-#### Setting Environment Variables
-API keys are managed as environment variabled in your local environment. These should be set prior to running a jupyter server or executing any scripts.
-  ```bash
-  export GITHUB_TOKEN="xxx"
-  export OPENAI_API_KEY="xxx"
-  export SERPAPI_API_KEY="xxx"
-  ```
-_note_... this can also be done using the Python [dotenv](https://configu.com/blog/using-py-dotenv-python-dotenv-package-to-manage-env-variables/) package.
+The `AI Builder` repository is a template for building your own AI applications. It is designed to be a starting point for your own projects, simplifying the process of building software applications around interchangeable open source models. This toolkit-based approach to interfacing with LLMs makes it easier to build complex architectures around these custom deployments.
+
+Attune Engineering has compiled a collection of private repositories that contain source code for engineering a complete production-ready chat application, fine-tune your own models, or create knowledge graph representations with custom models, all of which build atop the building blocks of this repository.
+
+<script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+<stripe-pricing-table pricing-table-id="prctbl_1OcTZ2CYS6uBSWgzp0K9QyqR"
+publishable-key="pk_live_51OZI1rCYS6uBSWgzAwICST3WbTCzjYySFxv4JWDz2nAU9oQKGuj4lZoX0ewGpVkimjmlak1qach26Z01sgBrvtAM00M2tRY6mX">
+</stripe-pricing-table>
