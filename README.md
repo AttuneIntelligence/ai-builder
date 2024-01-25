@@ -1,6 +1,7 @@
 
 <div align="center">
-    <h1>AI Building Blocks</h1>
+    <h1>AI Builder</h1>
+    <h4><em>built and maintained by <a href="">Reed Bender</a></em></h4>
 </div>
 
 <div align="center">
@@ -38,17 +39,13 @@
 
 ## RUNNING THE CODE
 
-We've containerized the complete development environment for interfacing with Generative AI models, templatized the configurations necessary for provisioning GPUs on <a href="https://runpod.io?ref=zdeyr0zx">Runpod</a> and made it easy for new users to get up with all the necessary package installations at the click of a button. Simply launch the `AI Builder` Docker container and get a fully configured environment with Jupyter to get you writing code in minutes.
+### Developing with Gitpod
 
-### Developing with [Gitpod](https://www.gitpod.io/docs/configure/workspaces/)
-
-Attune Engineering configures all of our repositories to work with Gitpod, enabling seamless version control and dependency management across software architectures. This is a great option for those who don't want to install Docker on their local machine, or who want to develop from a Chromebook or other device that doesn't support Docker. You are granted a free 50 hours of development per month, which is more than enough to get started.
+Attune Engineering configures all of our repositories to work with [Gitpod](https://www.gitpod.io/docs/configure/workspaces), enabling your to deploy a preconfigured development environment to provisioned cloud resources. You are granted a free 50 hours of development per month, which is more than enough to get started.
 
 <div align="center">
     <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
 </div>
-
-_note_... Gitpod also allows you to manage your collection of API keys as project-level secrets, which can be configured in Projects --> Settings --> Variables. 
 
 ### Running on your local machine
 
