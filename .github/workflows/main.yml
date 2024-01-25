@@ -39,9 +39,9 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/repository-name:main-${{ env.CURRENT_DATE }}
-            ghcr.io/${{ github.repository_owner }}/repository-name:main
+            {{ $REGISRY_IMAGE }}:main-${{ env.CURRENT_DATE }}
+            {{ $REGISRY_IMAGE }}:main
           cache-from: |
-            type=registry,ref=ghcr.io/${{ github.repository_owner }}/repository-name:main
+            type=registry,ref={{ $REGISRY_IMAGE }}:main
           cache-to: |
             type=inline

@@ -1,9 +1,6 @@
 
 <div align="center">
     <h1>AI Builder</h1>
-    <a href="https://github.com/AttuneEngineering/ai-builder/actions">
-        <img src="https://github.com/AttuneEngineering/ai-builder/actions/workflows/main.yml/badge.svg" alt="Build Status" />
-    </a>
     <p>For support, either add an issue or email us at <a href="mailto:contact@attuneengineering.com">contact@attuneengineering.com</a></p>
 </div>
 
@@ -45,12 +42,12 @@ We've containerized the complete development environment for interfacing with Ge
 3. Build the Docker image yourself _OR_ pull the image from Attune Engineering.
     ```bash
     ### BUILD FROM SOURCE...
-    export REGISTRY_IMAGE="ai-builder:main"
-    docker build -f Dockerfile -t $REGISTRY_IMAGE .
+    export REGISTRY_IMAGE="ai-builder"
+    docker build -f Dockerfile -t $REGISTRY_IMAGE:main .
 
     ### ...OR PULL FROM ATTUNE ENGINEERING
-    export REGISTRY_IMAGE="ghcr.io/attuneengineering/ai-builder:main"
-    docker pull $REGISTRY_IMAGE
+    export REGISTRY_IMAGE="ghcr.io/attuneengineering/ai-builder"
+    docker pull $REGISTRY_IMAGE:main
     ```
 
 4. Run the Docker container.
@@ -75,9 +72,16 @@ We've containerized the complete development environment for interfacing with Ge
     This will require you to have a Github account and a personal access token with `read:packages` and `write:packages` permissions. You can create a token [here](https://github.com/settings/tokens). Note that you'll also need to either fork the `AI Builder` repository or create a new repository in your own account.
     ```bash
     export GITHUB_TOKEN="xxx" 
+    export REGISTRY_IMAGE="ghcr.io/YOUR_GITHUB_USERNAME/ai-builder"
+    docker build -f Dockerfile -t $REGISTRY_IMAGE:main .
     echo $GITHUB_TOKEN | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
-    docker tag $REGISTRY_IMAGE ghcr.io/YOUR_GITHUB_USERNAME/ai-builder:main
-    docker push ghcr.io/YOUR_GITHUB_USERNAME/ai-builder:main
+    docker push $REGISTRY_IMAGE:main
+    ```
+
+    Additionally, in order for the Github Workflows to successfully build the image and push it to your Github Container Registry to automate the process of keeping this image up-to-date, you must add the following secrets to your `Repository Settings` --> `Secrets and Variables` --> `Actions` --> `Repository Secrets`...
+    ```
+    GITHUB_TOKEN="xxx" 
+    REGISTRY_IMAGE="ghcr.io/YOUR_GITHUB_USERNAME/ai-builder"
     ```
 
 ### Developing with [Gitpod](https://www.gitpod.io/docs/configure/workspaces/)
