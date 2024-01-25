@@ -80,9 +80,9 @@ We've containerized the complete development environment for interfacing with Ge
 
     Additionally, in order for the Github Workflows to successfully build the image and push it to your Github Container Registry to automate the process of keeping this image up-to-date, you must add the following secrets to your `Repository Settings` --> `Secrets and Variables` --> `Actions` --> `Repository Secrets`...
     ```
-    GITHUB_TOKEN="xxx" 
     REGISTRY_IMAGE="ghcr.io/YOUR_GITHUB_USERNAME/ai-builder"
     ```
+    `GITHUB_TOKEN` is already managed by the Github actions we are triggering with `.github/workflows/main.yml`, so it does not need to be added.
 
 ### Developing with [Gitpod](https://www.gitpod.io/docs/configure/workspaces/)
 
