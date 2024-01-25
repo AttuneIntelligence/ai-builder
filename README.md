@@ -50,6 +50,7 @@ The largest barrier-to-entry for working with open source LLMs lies in provision
   <ul>
     <li>See the complete list <a href="https://attuneengineering.com/models" target="_blank">here</a>.</li>
     <li>Includes Mixtral 8x7B, Llama 2, LLaVA Vision, and a plethora of others...</li>
+    <li>Find all of the README files at <code>server-docs/</code></li>
   </ul>
 
 ### Features
