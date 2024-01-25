@@ -106,8 +106,3 @@ This is not ideal, as all of the source code is organized relative to the contai
 The `AI Builder` repository is a template for building your own AI applications. It is designed to be a starting point for your own projects, simplifying the process of building software applications around interchangeable open source models. This toolkit-based approach to interfacing with LLMs makes it easier to build complex architectures around these custom deployments.
 
 Attune Engineering has compiled a collection of private repositories that contain source code for engineering a complete production-ready chat application, fine-tune your own models, or create knowledge graph representations with custom models, all of which build atop the building blocks of this repository.
-
-<script async src="https://js.stripe.com/v3/pricing-table.js"></script>
-<stripe-pricing-table pricing-table-id="prctbl_1OcTZ2CYS6uBSWgzp0K9QyqR"
-publishable-key="pk_live_51OZI1rCYS6uBSWgzAwICST3WbTCzjYySFxv4JWDz2nAU9oQKGuj4lZoX0ewGpVkimjmlak1qach26Z01sgBrvtAM00M2tRY6mX">
-</stripe-pricing-table>
