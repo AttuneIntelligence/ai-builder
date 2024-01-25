@@ -12,8 +12,6 @@ on:
 env:
   DOCKER_BUILDKIT: 1
 
-permissions: write-all
-
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
