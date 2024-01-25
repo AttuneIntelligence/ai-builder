@@ -62,7 +62,12 @@ The `AI Builder` repository is a template for building your own AI applications,
     * Or use Attune Engineering's fine-tuned Mixtral 8x7B for open source function calling;
     * Use OpenAI's function-calling structure while toggling between open source and OpenAI models.
 
-5. **Complete DevOps Solutions**
+5. **Streamlit Frontend**
+    * Deploy a streamlined frontend with <a href="https://streamlit.io/generative-ai" target="_blank">Streamlit</a>;
+    * Toggle between OpenAI and open source models;
+    * Upload images and review intermediate outputs in your browser.
+
+6. **Complete DevOps Solutions**
     * Take advantage of the complete containerized development environment;
     * Develop in the cloud with Gitpod or locally with Docker;
     * Build your own AI applications atop the `AI Builder` repository!
@@ -101,19 +106,18 @@ Attune Engineering configures all of our repositories to work with [Gitpod](http
     export REGISTRY_IMAGE="YOUR_GITHUB_USERNAME/ai-builder"
     docker build -f Dockerfile -t $REGISTRY_IMAGE:main .
 
-    ### ...OR PULL FROM ATTUNE ENGINEERING\'S GITHUB CONTAINER REGISTRY
+    ### ...OR PULL FROM ATTUNE ENGINEERING
     export REGISTRY_IMAGE="ghcr.io/attuneengineering/ai-builder"
     docker pull $REGISTRY_IMAGE:main
     ```
 
 4. Run the Docker container.
     ```bash
-    docker run -it $REGISTRY_IMAGE:main
-
-    ### OPTIONALLY, LAUNCH JUPYTER LAB ON START
-    docker run $REGISTRY_IMAGE:main /workspace/ai-builder/bin/jupyter-lab.sh
+    docker run -it --rm $REGISTRY_IMAGE:main
     ```
-    You're now ready to begin working within the interactive Docker CLI, or otherwise access Jupyter Lab at `http://localhost:8888`.
+    Additionally, there are two possible flags that can be added to this command...
+      * `--launch-jupyter` will launch a Jupyter Notebook server on port 8888.
+      * `--launch-ui` will launch a web interface for testing your models.
 
 5. _optional_ Push the Docker image to your own Github Container Registry.
     This will require you to have a personal access token with `read:packages` and `write:packages` permissions. You can create a token [here](https://github.com/settings/tokens). Note that you'll also need to either fork the `AI Builder` repository or create a new repository in your own account.
