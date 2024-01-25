@@ -13,9 +13,17 @@
   <a href="">
     <img src="https://img.shields.io/github/languages/code-size/attuneengineering/ai-builder" alt="Code Size" />
   </a>
+  <!-- Contributers -->
+  <a href="https://github.com/attuneengineering/ai-builder/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/attuneengineering/ai-builder.svg" alt="Contributers" />
+  </a>
   <!-- GitHub Issues -->
   <a href="https://github.com/attuneengineering/ai-builder/issues">
     <img src="https://img.shields.io/github/issues/attuneengineering/ai-builder.svg" alt="GitHub Issues" />
+  </a>
+  <!-- Forks -->
+  <a href="https://github.com/attuneengineering/ai-builder/network/members">
+    <img src="https://img.shields.io/github/forks/attuneengineering/ai-builder.svg" alt="GitHub Issues" />
   </a>
   <!-- License -->
   <a href="https://opensource.org/licenses/MIT">
