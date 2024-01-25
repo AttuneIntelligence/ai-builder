@@ -38,7 +38,13 @@
 
 ## OVERVIEW
 
-The `AI Builder` repository is a template for building your own AI applications, containing all of the building blocks necessary to get you building intelligent systems with LLMs in Python without the headaches of dependency management or infrastructure provisioning - _entirely for free and open source_.
+The `AI Builder` repository is a template for building your own AI applications, containing all of the building blocks necessary to get you building intelligent systems with LLMs in Python without the headaches of dependency management or infrastructure provisioning.
+
+### One-Click-Templates for API Server Deployment
+
+The largest barrier-to-entry for working with open source LLMs lies in provisioning the resources to GPUs that can be made available via an API. <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> simplifies much of this process, and we have created a collection of ready-to-deploy templates that will make an API endpoint available to you in minutes.
+    * See the complete list <a href="https://attuneengineering.com/models" target="_blank">here</a>.
+    * Includes Mixtral 8x7B, Llama 2, LLaVA Vision, and a plethora of others...
 
 ### Features
 
@@ -71,12 +77,6 @@ The `AI Builder` repository is a template for building your own AI applications,
     * Take advantage of the complete containerized development environment;
     * Develop in the cloud with Gitpod or locally with Docker;
     * Build your own AI applications atop the `AI Builder` repository!
-
-### One-Click-Templates for API Server Deployment
-
-The largest barrier-to-entry for working with open source LLMs lies in provisioning the resources to GPUs that can be made available via an API. <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> simplifies much of this process, and we have created a collection of ready-to-deploy templates that will make an API endpoint available to you in minutes.
-    * See the complete list <a href="https://attuneengineering.com/models" target="_blank">here</a>.
-    * Includes Mixtral 8x7B, Llama 2, LLaVA Vision, and a plethora of others...
 
 ---
 
