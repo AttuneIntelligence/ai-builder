@@ -36,13 +36,14 @@
 
 <div align="center">
     <p>For support, either <a href="https://github.com/AttuneEngineering/ai-builder/issues/new/choose"> add an issue</a> or reach out to <a href="mailto:contact@attuneengineering.com">contact@attuneengineering.com</a>.</p>
+    <p><em>last updated January 25, 2024</em></p>
 </div>
 
 ---
 
 ## OVERVIEW
 
-The `AI Builder` repository is a template for building your own AI applications, containing all of the building blocks necessary to get you building intelligent systems with LLMs in Python without the headaches of dependency management or infrastructure provisioning.
+The `AI Builder` repository is a template for building your own AI applications, containing all of the building blocks necessary to get you engineering intelligent systems with LLMs in Python without the headaches of dependency management or infrastructure provisioning.
 
 ### One-Click-Templates for API Server Deployment
 
