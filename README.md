@@ -8,10 +8,6 @@ Maintained by _[Reed Bender](https://github.com/mrbende)_.
   <a href="https://github.com/AttuneEngineering/ai-builder/actions">
     <img src="https://github.com/AttuneEngineering/ai-builder/actions/workflows/main.yml/badge.svg" alt="Build Status" />
   </a>
-  <!-- Docker Image Size -->
-  <a href="">
-    <img src="https://img.shields.io/docker/image-size/attuneengineering/ai-builder/main" alt="Docker Image Size" />
-  </a>
   <!-- Code Size -->
   <a href="">
     <img src="https://img.shields.io/github/languages/code-size/attuneengineering/ai-builder" alt="Code Size" />
@@ -26,27 +22,27 @@ Maintained by _[Reed Bender](https://github.com/mrbende)_.
   </a>
 </div>
 
-<div align="center">
-  <p><em>tools used</em></p>
-  <a href="">
-    <img src="assets/icons/python.svg" alt="Python" />
+<div align="center" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
+  <a href="" style="filter: invert(100%);">
+    <img src="assets/icons/python.svg" alt="Python" style="height: 30px;" />
   </a>
-  <a href="">
-    <img src="assets/icons/docker.svg" alt="Docker" />
+  <a href="" style="filter: invert(100%);">
+    <img src="assets/icons/docker.svg" alt="Docker" style="height: 30px;" />
   </a>
-  <a href="">
-    <img src="assets/icons/github.svg" alt="Github" />
+  <a href="" style="filter: invert(100%);">
+    <img src="assets/icons/github.svg" alt="Github" style="height: 30px;" />
   </a>
-  <a href="">
-    <img src="assets/icons/openai.svg" alt="OpenAI" />
+  <a href="" style="filter: invert(100%);">
+    <img src="assets/icons/openai.svg" alt="OpenAI" style="height: 30px;" />
   </a>
-  <a href="">
-    <img src="assets/icons/markdown.svg" alt="Markdown" />
+  <a href="" style="filter: invert(100%);">
+    <img src="assets/icons/markdown.svg" alt="Markdown" style="height: 30px;" />
   </a>
-  <a href="">
-    <img src="assets/icons/markdown.svg" alt="Markdown" />
+  <a href="" style="filter: invert(100%);">
+    <img src="assets/icons/markdown.svg" alt="Markdown" style="height: 30px;" />
   </a>
 </div>
+
 
 ---
 
