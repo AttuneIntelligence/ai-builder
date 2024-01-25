@@ -1,5 +1,9 @@
 
 <div align="center">
+  <img src="assets/images/ai-builder-header.jpg" alt="AI-Builder" />
+</div>
+
+<div align="center">
     <h1>AI Builder</h1>
 </div>
 
