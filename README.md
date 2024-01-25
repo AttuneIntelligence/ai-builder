@@ -42,7 +42,7 @@ The `AI Builder` repository is a template for building your own AI applications,
 ### Features
 
 - **Open Source Inference Guide**
-  * Complete tutorial with source code for building your own inference pipeline with open source instruction-following LLMs.
+  - Complete tutorial with source code for building your own inference pipeline with open source instruction-following LLMs.
 
 - **Runpod Server Templates**
   * One-Click-Templates for deploying and configuring open source LLMs on [Runpod](https://runpod.io?ref=zdeyr0zx) GPUs.
