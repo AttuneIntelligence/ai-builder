@@ -42,27 +42,25 @@ We've containerized the complete development environment for interfacing with Ge
 3. Build the Docker image yourself _OR_ pull the image from Attune Engineering.
     ```bash
     ### BUILD FROM SOURCE...
-    export REGISTRY_IMAGE="ai-builder"
+    export REGISTRY_IMAGE="ghcr.io/attuneengineering/ai-builder"
     docker build -f Dockerfile -t $REGISTRY_IMAGE:main .
 
     ### ...OR PULL FROM ATTUNE ENGINEERING
-    export REGISTRY_IMAGE="ghcr.io/attuneengineering/ai-builder"
     docker pull $REGISTRY_IMAGE:main
     ```
 
 4. Run the Docker container.
     ```bash
-    docker run -it $REGISTRY_IMAGE
+    docker run -it $REGISTRY_IMAGE:main
 
     ### OPTIONALLY, LAUNCH JUPYTER LAB ON START
-    docker run $REGISTRY_IMAGE /workspace/ai-builder/bin/jupyter-lab.sh
+    docker run $REGISTRY_IMAGE:main /workspace/ai-builder/bin/jupyter-lab.sh
     ```
     You're now ready to begin working within the interactive Docker CLI, or otherwise access Jupyter Lab at `http://localhost:8888`.
 
 5. Configure your secrets as environment variables.
     ```bash
     export GITHUB_TOKEN="xxx"
-    export HUGGING_FACE_HUB_TOKEN="xxx"
     export OPENAI_API_KEY="xxx"
     export SERPAPI_API_KEY="xxx"
     ```
@@ -78,11 +76,11 @@ We've containerized the complete development environment for interfacing with Ge
     docker push $REGISTRY_IMAGE:main
     ```
 
-    Additionally, in order for the Github Workflows to successfully build the image and push it to your Github Container Registry to automate the process of keeping this image up-to-date, you must add the following secrets to your `Repository Settings` --> `Secrets and Variables` --> `Actions` --> `Repository Secrets`...
+    Additionally, this process can be automated with Github Actions. In order for the Github Workflows to successfully build the image and push it to your Github Container Registry, you must add the following to your `Repository Settings` --> `Secrets and Variables` --> `Actions` --> `Repository Secrets`...
     ```
     REGISTRY_IMAGE="ghcr.io/YOUR_GITHUB_USERNAME/ai-builder"
     ```
-    `GITHUB_TOKEN` is already managed by the Github actions we are triggering with `.github/workflows/main.yml`, so it does not need to be added.
+    `GITHUB_TOKEN` is already managed by the Github actions we are triggering with `.github/workflows/main.yml`, so it does not need to be added in addition.
 
 ### Developing with [Gitpod](https://www.gitpod.io/docs/configure/workspaces/)
 
