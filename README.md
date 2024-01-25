@@ -1,7 +1,11 @@
-# AI Builder
-#### _by [Attune Engineering](https://attuneengineering.com/)_**
-For support, either add an issue or email us at contact@attuneengineering.com
-Maintained by _[Reed Bender](https://github.com/mrbende)_.
+
+<div align="center">
+    <h1>AI Builder</h1>
+    <a href="https://github.com/AttuneEngineering/ai-builder/actions">
+        <img src="https://github.com/AttuneEngineering/ai-builder/actions/workflows/main.yml/badge.svg" alt="Build Status" />
+    </a>
+    <p>For support, either add an issue or email us at <a href="mailto:contact@attuneengineering.com">contact@attuneengineering.com</a></p>
+</div>
 
 <div align="center">
   <!-- Build Status -->
@@ -21,28 +25,6 @@ Maintained by _[Reed Bender](https://github.com/mrbende)_.
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" />
   </a>
 </div>
-
-<div align="center" style="display: flex; justify-content: center; align-items: center; gap: 10px;">
-  <a href="" style="filter: invert(100%);">
-    <img src="assets/icons/python.svg" alt="Python" style="height: 30px;" />
-  </a>
-  <a href="" style="filter: invert(100%);">
-    <img src="assets/icons/docker.svg" alt="Docker" style="height: 30px;" />
-  </a>
-  <a href="" style="filter: invert(100%);">
-    <img src="assets/icons/github.svg" alt="Github" style="height: 30px;" />
-  </a>
-  <a href="" style="filter: invert(100%);">
-    <img src="assets/icons/openai.svg" alt="OpenAI" style="height: 30px;" />
-  </a>
-  <a href="" style="filter: invert(100%);">
-    <img src="assets/icons/markdown.svg" alt="Markdown" style="height: 30px;" />
-  </a>
-  <a href="" style="filter: invert(100%);">
-    <img src="assets/icons/markdown.svg" alt="Markdown" style="height: 30px;" />
-  </a>
-</div>
-
 
 ---
 
