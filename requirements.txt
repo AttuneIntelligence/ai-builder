@@ -16,3 +16,4 @@ docx2txt==0.8
 imageio==2.33.1
 termcolor==2.4.0
 transformers==4.36.2
+python-dotenv==1.0.1
