@@ -1,6 +1,6 @@
 
 <div align="center">
-    <h1>AI Builder</h1>
+    <h1>AI Building Blocks</h1>
 </div>
 
 <div align="center">
