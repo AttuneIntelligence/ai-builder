@@ -1,7 +1,6 @@
 
 <div align="center">
     <h1>AI Builder</h1>
-    <p>For support, either add an issue or email us at <a href="mailto:contact@attuneengineering.com">contact@attuneengineering.com</a></p>
 </div>
 
 <div align="center">
@@ -29,6 +28,10 @@
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" />
   </a>
+</div>
+
+<div>
+    <p>For support, either <a href="https://github.com/AttuneEngineering/ai-builder/issues/new/choose"> add an issue</a> or email us at <a href="mailto:contact@attuneengineering.com">contact@attuneengineering.com</a></p>
 </div>
 
 ---
