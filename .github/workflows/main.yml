@@ -12,9 +12,9 @@ on:
 env:
   DOCKER_BUILDKIT: 1
 
-  permissions:
-    contents: read
-    packages: write
+permissions:
+  contents: read
+  packages: write
 
 jobs:
   build_and_push:
