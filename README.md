@@ -35,32 +35,45 @@
 </div>
 
 ---
+
 ## OVERVIEW
 
 The `AI Builder` repository is a template for building your own AI applications, containing all of the building blocks necessary to get you building intelligent systems with LLMs in Python without the headaches of dependency management or infrastructure provisioning - _entirely for free and open source_.
 
 ### Features
 
-- **Open Source Inference Guide**
-  - Complete tutorial with source code for building your own inference pipeline with open source instruction-following LLMs.
+1. **Open Source Inference Guide**
+  * Deploy Open Source LLMs to cloud-provisioned GPUs;
+  * Integrate those API endpoints into your Python application;
+  * Convert OpenAI applications to self-hosted endpoints without rebuilding your architecture.
 
-- **Runpod Server Templates**
-  * One-Click-Templates for deploying and configuring open source LLMs on [Runpod](https://runpod.io?ref=zdeyr0zx) GPUs.
+2. **Runpod Server Templates**
+  * Provision GPU's for serving LLMs on <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> GPUs;
+  * Make those resources available at an API;
+  * Securely control access to your private model deployment.
 
-- **Multimodal AI Vision**
-  * Server templates and inference scripts for working with multimodal LLMs and integrating AI vision into your processes.
+3. **Multimodal AI Vision**
+  * Deploy open source alternatives to GPT-4-Vision;
+  * Integration image comprehension into your AI system;
+  * Compare GPT-4-Vision with the best open source alternatives.
 
-- **Function Calling**
-  * Learn to build agential software architectures that can take actions with GPT-4 **OR** Attune Engineering's custom fine-tuned function calling models.
+4. **Function Calling**
+  * Learn to build agential software architectures that can take actions with GPT-4;
+  * ...**OR** use the same architecture with Attune Engineering's fine-tuned Mixtral 8x7B for open source function calling;
+  * Use OpenAI's function-calling structure while toggling between open source and OpenAI models.
 
-- **Complete DevOps Solutions**
-  * Manage all development and production environments for your AI systems with our curated Docker containers and Github workflows for building with AI.
+5. **Complete DevOps Solutions**
+  * Take advantage of the complete containerized development environment;
+  * Develop in the cloud with Gitpod or locally with Docker;
+  * Build your own AI applications atop the `AI Builder` repository!
 
 ### One-Click-Templates for API Server Deployment
 
 The largest barrier-to-entry for working with open source LLMs lies in provisioning the resources to GPUs that can be made available via an API. <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> simplifies much of this process, and we have created a collection of ready-to-deploy templates that will make an API endpoint available to you in minutes.
   * See the complete list <a href="https://attuneengineering.com/models" target="_blank">here</a>.
   * Includes Mixtral 8x7B, Llama 2, LLaVA Vision, and a plethora of others...
+
+---
 
 ## BUILDING YOUR ENVIRONMENT
 
