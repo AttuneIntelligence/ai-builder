@@ -35,6 +35,32 @@
 </div>
 
 ---
+## OVERVIEW
+
+The `AI Builder` repository is a template for building your own AI applications, containing all of the building blocks necessary to get you building intelligent systems with LLMs in Python without the headaches of dependency management or infrastructure provisioning - _entirely for free and open source_.
+
+### Features
+
+Open Source Inference Guide
+: Complete tutorial with source code for building your own inference pipeline with open source instruction-following LLMs.
+
+Runpod Server Templates
+: One-Click-Templates for deploying and configuring open source LLMs on <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> GPUs.
+
+Multimodal AI Vision
+: Server templates and inference scripts for working with multimodal LLMs and integrating AI vision into your processes.
+
+Function Calling
+: Learn to build agential software architectures that can take actions with GPT-4 **OR** Attune Engineering's custom fine-tuned function calling models.
+
+Complete DevOps Solutions
+: Manage all developmebt and production environments for your AI systems with our curated Docker contianers and Github workflows for building with AI.
+
+### One-Click-Templates for API Server Deployment
+
+The largest barrier-to-entry for working with open source LLMs lies in provisioning the resources to GPUs that can be made available via an API. <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> simplifies much of this process, and we have created a collection of ready-to-deploy templates that will make an API endpoint available to you in minutes.
+  * See the complete list <a href="https://attuneengineering.com/models" target="_blank">here</a>.
+  * Includes Mixtral 8x7B, Llama 2, LLaVA Vision, and a plethora of others...
 
 ## BUILDING YOUR ENVIRONMENT
 
@@ -85,7 +111,7 @@ Attune Engineering configures all of our repositories to work with [Gitpod](http
     echo $GITHUB_TOKEN | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
     docker push $REGISTRY_IMAGE:main
     ```
-    _note_... Your `GITHUB_TOKEN`` is already managed by the Github actions we are triggering with ``.github/workflows/main.yml`, so it does not need to be added in addition.
+    _note_... Your `GITHUB_TOKEN` is already managed by the Github actions we are triggering with `.github/workflows/main.yml`, so it does not need to be added in addition.
 
     Additionally, this process can be automated with Github Actions. In order for the Github Workflows to successfully build the image and push it to your Github Container Registry, you must add the following to your `Repository Settings` --> `Secrets and Variables` --> `Actions` --> `Repository Secrets`...
     ```
