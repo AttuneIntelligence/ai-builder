@@ -34,7 +34,7 @@
   </a>
   <!-- Sponsor -->
   <a href="https://github.com/sponsors/attuneengineering">
-    <img src="https://img.shields.io/badge/sponsor-30363D&logo=GitHub-Sponsors&logoColor=#white" />        
+    <img src="https://img.shields.io/badge/sponsor-Sponsors&logoColor=#white" />        
   </a>;
 </div>
 
