@@ -30,8 +30,9 @@
   </a>
 </div>
 
-<div>
-    <p>For support, either <a href="https://github.com/AttuneEngineering/ai-builder/issues/new/choose"> add an issue</a> or email us at <a href="mailto:contact@attuneengineering.com">contact@attuneengineering.com</a></p>
+<div align="center">
+    <p>For support...</p>
+    <p>...either <a href="https://github.com/AttuneEngineering/ai-builder/issues/new/choose"> add an issue</a> or reach out to <a href="mailto:contact@attuneengineering.com">contact@attuneengineering.com</a></p>
 </div>
 
 ---
