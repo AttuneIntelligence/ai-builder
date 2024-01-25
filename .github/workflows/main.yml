@@ -22,17 +22,15 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-      - name: Log in to Docker Hub
+      - name: Log in to GitHub Container Registry
         uses: docker/login-action@v1
         with:
-          username: ${{ secrets.DOCKERHUB_USER }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get the current date
         run: echo "CURRENT_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
-
-      - name: Pull Docker Image
-        run: docker pull ${{ secrets.REGISTRY_IMAGE }}:main || true
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v3
@@ -41,9 +39,9 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.REGISTRY_IMAGE }}:main-${{ env.CURRENT_DATE }}
-            ${{ secrets.REGISTRY_IMAGE }}:main
+            ghcr.io/${{ github.repository_owner }}/repository-name:main-${{ env.CURRENT_DATE }}
+            ghcr.io/${{ github.repository_owner }}/repository-name:main
           cache-from: |
-            type=registry,ref=${{ secrets.REGISTRY_IMAGE }}:main
+            type=registry,ref=ghcr.io/${{ github.repository_owner }}/repository-name:main
           cache-to: |
             type=inline

@@ -2,21 +2,21 @@
 ############ AI BUILDER ############
 ###### BY ATTUNE ENGINEERING #######
 ####################################
-
 FROM gitpod/workspace-python-3.9:latest
 
 ### SET ENVIRONMENT
 USER root
-WORKDIR /workspace/
 RUN mkdir -p /workspace/ai-builder/
 RUN chown -R gitpod:gitpod /workspace/ai-builder/
+WORKDIR /workspace/ai-builder/
 
 ### INSTALL DEPENDENCIES
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpq-dev \
     wget \
-    cowsay 
+    cowsay \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/*
 
 ### COPY CONTENTS
 COPY . /workspace/ai-builder/

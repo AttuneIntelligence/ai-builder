@@ -1,5 +1,4 @@
-image:
-  file: Dockerfile
+image: ghcr.io/attuneengineering/ai-builder:main
 ports:
   - port: 8888
     onOpen: ignore
