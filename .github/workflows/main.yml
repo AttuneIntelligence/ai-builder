@@ -12,9 +12,9 @@ on:
 env:
   DOCKER_BUILDKIT: 1
 
-permissions:
-  contents: read
-  packages: write
+  permissions:
+    contents: read
+    packages: write
 
 jobs:
   build_and_push:
@@ -35,10 +35,7 @@ jobs:
           logout: false
 
       - name: Get the current date
-        run: echo "CURRENT_DATE=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
-
-      - name: Lowercase the repo name and username
-        run: echo "REPO=${{ secrets.REGISTRY_IMAGE,,}}" >> $GITHUB_ENV
+        run: echo "CURRENT_DATE=$(date +'%Y-%m-%d')" >> ${GITHUB_ENV}
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v2
@@ -47,9 +44,9 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ env.REPO }}:main-${{ env.CURRENT_DATE }}
-            ${{ env.REPO }}:main
+            ${{ secrets.REGISTRY_IMAGE }}:main-${{ env.CURRENT_DATE }}
+            ${{ secrets.REGISTRY_IMAGE }}:main
           cache-from: |
-            ${{ env.REPO }}:main
+            type=registry,ref=${{ secrets.REGISTRY_IMAGE }}:main
           cache-to: |
-            ${{ env.REPO }}:main
+            type=inline
