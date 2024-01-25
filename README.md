@@ -42,20 +42,19 @@ The `AI Builder` repository is a template for building your own AI applications,
 ### Features
 
 - **Open Source Inference Guide**
-  : Complete tutorial with source code for building your own inference pipeline with open source instruction-following LLMs.
+  * Complete tutorial with source code for building your own inference pipeline with open source instruction-following LLMs.
 
 - **Runpod Server Templates**
-  : One-Click-Templates for deploying and configuring open source LLMs on [Runpod](https://runpod.io?ref=zdeyr0zx) GPUs.
+  * One-Click-Templates for deploying and configuring open source LLMs on [Runpod](https://runpod.io?ref=zdeyr0zx) GPUs.
 
 - **Multimodal AI Vision**
-  : Server templates and inference scripts for working with multimodal LLMs and integrating AI vision into your processes.
+  * Server templates and inference scripts for working with multimodal LLMs and integrating AI vision into your processes.
 
 - **Function Calling**
-  : Learn to build agential software architectures that can take actions with GPT-4 **OR** Attune Engineering's custom fine-tuned function calling models.
+  * Learn to build agential software architectures that can take actions with GPT-4 **OR** Attune Engineering's custom fine-tuned function calling models.
 
 - **Complete DevOps Solutions**
-  : Manage all development and production environments for your AI systems with our curated Docker containers and Github workflows for building with AI.
-
+  * Manage all development and production environments for your AI systems with our curated Docker containers and Github workflows for building with AI.
 
 ### One-Click-Templates for API Server Deployment
 
