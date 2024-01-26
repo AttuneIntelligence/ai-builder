@@ -5,5 +5,5 @@ ports:
   - port: 5000
     onOpen: ignore
 tasks:
-  - command: cowsay namaste 🙏🏼
+  - command: cowsay namaste 🙏
 
