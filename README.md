@@ -94,9 +94,9 @@ Attune Engineering configures all of our repositories to work with [Gitpod](http
 </div>
 
 Once working in Gitpod, you can launch the Jupyter Lab environment with the following command...
-    ```bash
-    source /workspace/ai-builder/bin/gitpod-jupyter-lab.sh
-    ```
+  ```bash
+  source /workspace/ai-builder/bin/gitpod-jupyter-lab.sh
+  ```
 
 #### (b) Running Docker on your local machine
 
