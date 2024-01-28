@@ -187,10 +187,10 @@ This is all that is required to then instantiate the `AIBuilder` class, as defin
 
   ```bash
   ### IN GITPOD
-  source /workspace/ai-builder/bin/gitpod-launch-jupyter.sh
+  source /workspace/ai-builder/bin/gitpod-jupyter-lab.sh
 
   ### LOCALLY BUILT IAMGE
-  source /workspace/ai-builder/bin/launch-jupyter.sh
+  source /workspace/ai-builder/bin/jupyter-lab.sh
   ```
 Check out `dev.ipynb` to get started.
 
