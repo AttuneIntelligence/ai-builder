@@ -40,13 +40,37 @@
     <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
 </div>
 
+### Abstract
+
+The `AI Builder` repository is a template from which you can engineer your own application with open source generative AI. This codebase forms the cornerstone of Attune Engineering's [collection of private repositories](https://attuneengineering.com/source-code.html) for designing software architectures with Large Language Models. 
+
+Within this repository you'll find:
+  * One-Click-Templates for provisioning <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> GPUs with open-source LLMs;
+  * Inference scripts for communicating with your API endpoints; _and_
+  * DevOps configurations for managing development environments with Docker and Gitpod; _and_
+  * Multimodal model templates for image comprehension as an open alternative to GPT-4-Vision; _and_
+  * Function-calling scripts for building agential software architectures with GPT-4; _and_
+  * A Streamlit frontend for testing your deployments in the browser.
+
+This toolkit-based approach to interfacing with LLMs makes it easier to build complex architectures around your own fine-tuned open source LLMs. While OpenAI's API will continue to be the cheapest option for most all use cases - _because_ they can serve hundreds of thousands of people and amortise costs over concurrent requests - there are a few reasons why you may want to consider deploying your own API... if you
+  * Cannot send data to OpenAI for privacy reasons;  _or_
+  * Have a custom fine-tuned model you'd like to work with; _or_
+  * Intend to build an application that can scale without being limited by OpenAI's API; _or_
+  * Want to build a multi-model architecture across your own GPU hardware...
+
+...**this** is where you may want to rent a GPU server, set up your own API, and make queries to that API. If you're interested in this approach, we've created a collection of templates for you to hit the ground running!
+
 ---
 
-## OVERVIEW
+# Table of Contents
+- [API Server Deployments](#api-server-deployments)
+- [Building Your Environment](#building-a-development-environment)
+- [Usage](#usage)
+- [License](#license)
 
-The `AI Builder` repository is a template for building your own AI applications, containing all of the building blocks necessary to get you engineering intelligent systems with LLMs in Python without the headaches of dependency management or infrastructure provisioning.
+---
 
-### One-Click-Templates for API Server Deployment
+## API Server Deployments
 
 The largest barrier-to-entry for working with open source LLMs lies in provisioning your model to GPUs that can be made available at an API. <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> simplifies much of this process, and we have created a collection of ready-to-deploy templates to get you set up with an API endpoint in minutes.
   <ul>
@@ -56,43 +80,11 @@ The largest barrier-to-entry for working with open source LLMs lies in provision
     <li>Find all of the README files in <code>server-docs/</code>.</li>
   </ul>
 
-### Features
-
-1. **Open Source Inference Guide**
-    * Deploy Open Source LLMs to cloud-provisioned GPUs;
-    * Integrate those API endpoints into your Python application;
-    * Convert OpenAI applications to self-hosted endpoints without rebuilding your architecture.
-
-2. **Runpod Server Templates**
-    * Provision GPU's for serving LLMs on <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> GPUs;
-    * Make those resources available at an API;
-    * Securely control access to your private model deployment.
-
-3. **Multimodal AI Vision**
-    * Deploy open source alternatives to GPT-4-Vision;
-    * Integration image comprehension into your AI system;
-    * Compare GPT-4-Vision with the best open source alternatives.
-
-4. **Function Calling**
-    * Learn to build agential software architectures that can take actions with GPT-4;
-    * Or use Attune Engineering's fine-tuned Mixtral 8x7B for open source function calling;
-    * Use OpenAI's function-calling structure while toggling between open source and OpenAI models.
-
-5. **Streamlit Frontend**
-    * Deploy a streamlined frontend with <a href="https://streamlit.io/generative-ai" target="_blank">Streamlit</a>;
-    * Toggle between OpenAI and open source models;
-    * Upload images and review intermediate outputs in your browser.
-
-6. **Complete DevOps Solutions**
-    * Take advantage of the complete containerized development environment;
-    * Develop in the cloud with Gitpod or locally with Docker;
-    * Build your own AI applications atop the `AI Builder` repository!
-
 ---
 
-## BUILDING YOUR ENVIRONMENT
+## Building Your Environment
 
-### (a) Developing with Gitpod
+#### (a) Developing with Gitpod
 
 Attune Engineering configures all of our repositories to work with [Gitpod](https://www.gitpod.io/docs/configure/workspaces), enabling you to deploy a preconfigured development environment to provisioned cloud resources. You are granted a free 50 hours of development per month, which is more than enough to get started.
 
@@ -100,7 +92,7 @@ Attune Engineering configures all of our repositories to work with [Gitpod](http
     <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
 </div>
 
-### (b) Running Docker on your local machine
+#### (b) Running Docker on your local machine
 
 1. Install [Docker](https://docs.docker.com/get-docker/) on your machine if it is not already installed.
 
@@ -125,7 +117,7 @@ Attune Engineering configures all of our repositories to work with [Gitpod](http
     ```bash
     docker run -it --rm $REGISTRY_IMAGE:main
     ```
-    Additionally, there are two possible flags that can be added to this command...
+    Additionally, there are two possible flags that can be appended to this command...
       * `--launch-jupyter` will launch a Jupyter Notebook server on port 8888.
       * `--launch-ui` will launch a web interface for testing your models.
 
@@ -145,7 +137,7 @@ Attune Engineering configures all of our repositories to work with [Gitpod](http
     REGISTRY_IMAGE="ghcr.io/YOUR_GITHUB_USERNAME/ai-builder"
     ```
 
-### (c) Building the environment locally
+#### (c) Building the environment locally
 
 This is not ideal, as all of the source code is organized relative to the container's home directory within (`/workspace/ai-builder/src`). If you're simply looking to adapt the code to your own purposes, however, you can simply install the necessary requirements and update the `PYTHONPATH` to point to your `src` directory.
     ```bash
@@ -154,8 +146,10 @@ This is not ideal, as all of the source code is organized relative to the contai
 
 ---
 
-## NEXT STEPS...
+## Usage 
 
-The `AI Builder` repository is a template for building your own AI applications. It is designed to be a starting point for your own projects, simplifying the process of building software applications around interchangeable open source models. This toolkit-based approach to interfacing with LLMs makes it easier to build complex architectures around these custom deployments.
+---
 
-Attune Engineering has compiled a collection of private repositories that contain source code for engineering a complete production-ready chat application, fine-tune your own models, or create knowledge graph representations with custom models, all of which build atop the building blocks of this repository.
+## License
+
+---

@@ -1,12 +1,12 @@
 #!/bin/bash
 
 if [ "$1" == "--launch-jupyter" ]; then
-    ### START JUPYTER
+    # Start Jupyter
     source /workspace/ai-builder/bin/jupyter-lab.sh
-if [ "$1" == "--launch-ui" ]; then
-    ### RUN STREAMLIT UI
+elif [ "$1" == "--launch-ui" ]; then
+    # Run Streamlit UI
     source /workspace/ai-builder/bin/run-streamlit.sh
 else
-    ### OR JUST RUN INTERACTIVE SHELL
+    # Or just run interactive shell
     /bin/bash
 fi
