@@ -6,12 +6,9 @@ sys.path.append('/workspace/ai-builder/src')
 from bin.keys import set_keys
 from bin.utilities import *
 from chat_templates.prompt_engineering import *
-from functions.toolkit import *
 from runpod_inference.LLaVA_vision import *
-from runpod_inference.Mixtral8x7B_function_calling import *
 from runpod_inference.Mixtral8x7B_instruct import *
 from runpod_inference.Mixtral8x7B_summarization_64k import *
-from openai_inference.OpenAI_function_calling import *
 from openai_inference.OpenAI_gpt_4_vision import *
 from openai_inference.OpenAI_instruct import *
 
@@ -28,12 +25,9 @@ class DigitalAgent:
         self.home = "/workspace/ai-builder/"
         self.Utilities = Utilities(self)
         self.ContextEngineering = ContextEngineering(self)
-        self.Toolkit = Toolkit(self)
         
         ### HYPERPARAMETERS
         self.max_tokens = 2400
-        self.max_agent_iterations = 3
-        self.memory_context_len = 3
         self.streaming = True
 
         #############################
@@ -73,21 +67,13 @@ class DigitalAgent:
     def instantiate_model_apis(self):
         print(f"Connecting to LLM APIs...")
         ### ATTEMPT RUNPOD CONNECTION...
-        if self.try_self_hosted:
-            ### AGENT
-            if self.Utilities.test_api_up(self.agent_model_url):
-                self.Agent = Mixtral7x8B_Agent(self)
-                print(f"=> Agent Model: {self.agent_model_name}")
-            else:
-                self.Agent = OpenAI_Agent(self)
-                print(f"=> Agent Model: {self.gpt_model} (failed to connect to {self.agent_model_name}")
-                
+        if self.try_self_hosted:   
             ### INSTRUCT
             if self.Utilities.test_api_up(self.instruct_model_url):
                 self.Instruct = Mixtral7x8B_Instruct(self)
                 print(f"=> Instruct Model: {self.instruct_model_name}")
             else:
-                self.Instruct = OpenAI_Completion(self)
+                self.Instruct = OpenAI_Instruct(self)
                 print(f"=> Instruct Model: {self.gpt_model} (failed to connect to {self.instruct_model_name})")
                 
             ### VISION
@@ -101,10 +87,8 @@ class DigitalAgent:
 
         ### ...OR JUST CONNECT TO OPENAI
         else:
-            self.Agent = OpenAI_Agent(self)
             self.Instruct = OpenAI_Instruct(self)
             self.Vision = OpenAI_Vision(self)
-            print(f"=> Agent Model: {self.gpt_model}")
             print(f"=> Vision Model: {self.gpt_vision_model}")
             print(f"=> Instruct Model: {self.gpt_model}")
 

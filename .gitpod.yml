@@ -5,5 +5,5 @@ ports:
   - port: 5000
     onOpen: ignore
 tasks:
-  - init: export HISTFILE=/workspace/.gitpod/cmd-history
+  - init: git remote set-url origin https://$GITHUB_TOKEN@github.com/AttuneEngineering/ai-builder.git
   - command: cowsay namaste 🙏
