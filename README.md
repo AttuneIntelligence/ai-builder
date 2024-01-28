@@ -175,7 +175,7 @@ This is not ideal, as all of the source code is organized relative to the contai
 
 ### Setting API Keys 
 
-You must make the following API keys available as environment variables. This can be done by creating a `.env`` file in your environment with the following keys, or otherwise by adding them to your environment.
+You must make the following API keys available as environment variables. This can be done by creating a `.env` file with the following keys, or otherwise by adding them to your environment.
   ```bash
   OPENAI_API_KEY="xxx"
   HUGGING_FACE_HUB_TOKEN="xxx" ### if deploying a private a gated model
@@ -198,6 +198,7 @@ If you're looking to toy around with a web interface deployed to your local host
 
 ## License
 
-This project is licensed under the terms of the [MIT](https://github.com/AttuneEngineering/ai-builder/blob/main/LICENSE) license. For more details, please see the LICENSE file in this repository.
+This project is licensed under the terms of the [MIT License](https://github.com/AttuneEngineering/ai-builder/blob/main/LICENSE).
+Happy Hacking!
 
 ---
