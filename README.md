@@ -40,16 +40,17 @@
     <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
 </div>
 
+---
+
 ### Abstract
 
 The `AI Builder` repository is a template from which you can engineer your own application with open source generative AI. This codebase forms the cornerstone of Attune Engineering's [collection of private repositories](https://attuneengineering.com/source-code.html) for designing software architectures with Large Language Models. 
 
 Within this repository you'll find:
   * One-Click-Templates for provisioning <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> GPUs with open-source LLMs;
-  * Inference scripts for communicating with your API endpoints; _and_
-  * DevOps configurations for managing development environments with Docker and Gitpod; _and_
-  * Multimodal model templates for image comprehension as an open alternative to GPT-4-Vision; _and_
-  * Function-calling scripts for building agential software architectures with GPT-4; _and_
+  * Inference scripts for communicating with your API endpoints;
+  * DevOps configurations for managing development environments with Docker and Gitpod;
+  * Multimodal model templates for image comprehension as an open alternative to GPT-4-Vision;
   * A Streamlit frontend for testing your deployments in the browser.
 
 This toolkit-based approach to interfacing with LLMs makes it easier to build complex architectures around your own fine-tuned open source LLMs. While OpenAI's API will continue to be the cheapest option for most all use cases - _because_ they can serve hundreds of thousands of people and amortise costs over concurrent requests - there are a few reasons why you may want to consider deploying your own API... if you
