@@ -26,7 +26,23 @@
   </a>
   <!-- Forks -->
   <a href="https://github.com/attuneengineering/ai-builder/network/members">
-    <img src="https://img.shields.io/github/forks/attuneengineering/ai-builder.svg" alt="GitHub Issues" />
+    <img src="https://img.shields.io/github/forks/attuneengineering/ai-builder.svg" alt="Forks" />
+  </a>
+  <!-- Followers -->
+  <a href="https://github.com/attuneengineering?tab=followers" target="_blank">
+    <img src="https://img.shields.io/github/followers/attuneengineering?style=social" alt="Follow on GitHub">
+  </a>
+  <!-- Stars -->
+  <a href="https://github.com/attuneengineering/ai-builder/stargazers" target="_blank">
+    <img src="https://img.shields.io/github/stars/attuneengineering/ai-builder?style=social" alt="GitHub stars">
+  </a>
+  <!-- Commit Activity -->
+  <a href="https://github.com/attuneengineering/ai-builder/commits" target="_blank">
+    <img src="https://img.shields.io/github/commit-activity/y/attuneengineering/ai-builder" alt="GitHub commits">
+  </a>
+  <!-- Last Commit -->
+  <a href="https://github.com/attuneengineering/ai-builder/commits" target="_blank">
+    <img src="https://img.shields.io/github/last-commit/attuneengineering/ai-builder" alt="GitHub last commit">
   </a>
   <!-- License -->
   <a href="https://opensource.org/licenses/MIT">
@@ -36,7 +52,6 @@
 
 <div align="center">
     <p>For support, either <a href="https://github.com/AttuneEngineering/ai-builder/issues/new/choose"> add an issue</a> or reach out to <a href="mailto:contact@attuneengineering.com">contact@attuneengineering.com</a>.</p>
-    <p><em>last updated January 25, 2024</em></p>
     <p><em>created and maintained by <a href="https://github.com/mrbende" target="_blank">Reed Bender</a></em></p>
     <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
 </div>
