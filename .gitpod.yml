@@ -7,6 +7,3 @@ ports:
 tasks:
   - init: export HISTFILE=/workspace/.gitpod/cmd-history
   - command: cowsay namaste 🙏
-  - command: echo "To launch Jupyter Lab, run '/workspace/ai-builder/bin/launch-jupyter.sh'."
-
-
