@@ -65,7 +65,7 @@ This toolkit-based approach to interfacing with LLMs makes it easier to build co
 
 # Table of Contents
 - [API Server Deployments](#api-server-deployments)
-- [Building Your Environment](#building-a-development-environment)
+- [Building Your Environment](#building-your-environment)
 - [Usage](#usage)
 - [License](#license)
 
@@ -92,6 +92,11 @@ Attune Engineering configures all of our repositories to work with [Gitpod](http
 <div align="center">
     <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
 </div>
+
+Once working in Gitpod, you can launch the Jupyter Lab environment with the following command...
+    ```bash
+    source /workspace/ai-builder/bin/gitpod-jupyter-lab.sh
+    ```
 
 #### (b) Running Docker on your local machine
 
