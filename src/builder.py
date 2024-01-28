@@ -12,7 +12,7 @@ from runpod_inference.Mixtral8x7B_summarization_64k import *
 from openai_inference.OpenAI_gpt_4_vision import *
 from openai_inference.OpenAI_instruct import *
 
-class DigitalAgent:
+class AIBuilder:
     def __init__(self,
                  try_self_hosted=True,
                  verbose=False):
@@ -33,11 +33,6 @@ class DigitalAgent:
         #############################
         ### MODEL API CONNECTIONS ###
         #############################
-        ### RUNPOD AGENT
-        self.agent_runpod_id = "0j95403wwm9397"
-        self.agent_model_name = "Trelis/Mixtral-8x7B-Instruct-v0.1-function-calling-v3"
-        self.agent_model_url = f"https://{self.agent_runpod_id}-8080.proxy.runpod.net"
-
         ### RUNPOD VISION
         self.vision_runpod_id = "9ngplbfr3cqaiq"
         self.vision_model_name = "liuhaotian/llava-v1.5-7b"

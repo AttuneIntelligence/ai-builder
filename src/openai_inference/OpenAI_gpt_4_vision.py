@@ -12,26 +12,25 @@ from bin.utilities import *
 
 class OpenAI_Vision:
     def __init__(self,
-                 assistant):
-        self.assistant = assistant
+                 builder):
+        self.builder = builder
 
     def vision_completion(self,
                           question, 
                           image_path):
         ### SETUP API CALL
         timer = Timer()
-        client = OpenAI()
         prompt = f"{question}\nYou should be descript, precise, and comprehensive in your response."
-        b64_image = self.assistant.Utilities.encode_image_to_base64(image_path)
+        b64_image = self.builder.Utilities.encode_image_to_base64(image_path)
 
         try:
             ### ATTEMPT THE API CALL
             headers = {
                 "Content-Type": "application/json",
-                "Authorization": f"Bearer {self.assistant.OPENAI_API_KEY}"
+                "Authorization": f"Bearer {self.builder.OPENAI_API_KEY}"
             }
             payload = {
-                "model": self.assistant.gpt_vision_model,
+                "model": self.builder.gpt_vision_model,
                 "messages": [
                     {
                         "role": "user",
@@ -50,7 +49,7 @@ class OpenAI_Vision:
                         ]
                     }
                 ],
-                "max_tokens": self.assistant.max_tokens
+                "max_tokens": self.builder.max_tokens
             }
             response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
             image_description = response.json()["choices"][0]["message"]["content"]

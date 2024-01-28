@@ -27,6 +27,9 @@ RUN pip install --upgrade pip && \
     python3 -m pip install -U -r /workspace/ai-builder/requirements.txt && \
     rm /workspace/ai-builder/requirements.txt
 
+EXPOSE 8080
+EXPOSE 8888
+
 ENTRYPOINT ["/workspace/ai-builder/bin/docker_entry.sh"]
 
 ########################

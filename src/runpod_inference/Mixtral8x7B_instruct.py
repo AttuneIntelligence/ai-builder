@@ -12,12 +12,12 @@ from bin.utilities import *
 
 class Mixtral7x8B_Instruct:
     def __init__(self,
-                 assistant):
+                 builder):
         ### SETUP LLAVA PARAMETERS
-        self.assistant = assistant
+        self.builder = builder
         self.runpod_port = "8080"
-        self.model_path = f"https://{self.assistant.instruct_runpod_id}-{self.runpod_port}.proxy.runpod.net"
-        self.tokenizer = AutoTokenizer.from_pretrained(self.assistant.instruct_model_name, trust_remote_code=True)
+        self.model_path = f"https://{self.builder.instruct_runpod_id}-{self.runpod_port}.proxy.runpod.net"
+        self.tokenizer = AutoTokenizer.from_pretrained(self.builder.instruct_model_name, trust_remote_code=True)
 
     def format_messages(self,
                         messages):
@@ -55,15 +55,15 @@ class Mixtral7x8B_Instruct:
         
         ### CREATE MESSAGES
         if question == None:
-            question = self.assistant.question
-        messages = self.assistant.ContextEngineering.instruct_prompt_template(question, system_prompt=system_prompt)
+            question = self.builder.question
+        messages = self.builder.ContextEngineering.instruct_prompt_template(question, system_prompt=system_prompt)
 
         ### FORMAT INPUT
         formatted_messages = self.format_messages(messages)
         json_payload = json.dumps({
             "inputs": formatted_messages, 
             "parameters": {
-                "max_new_tokens": self.assistant.max_tokens, 
+                "max_new_tokens": self.builder.max_tokens, 
                 "do_sample": False
             }
         })
@@ -89,7 +89,7 @@ class Mixtral7x8B_Instruct:
             tokens_per_second = tokens_generated / time_taken if time_taken > 0 else 0
             print(f"Total Time Taken: {time_taken:.2f} seconds")
             print(f"Tokens per Second: {tokens_per_second:.2f}")
-            self.assistant.Utilities.pretty_print_conversation(messages)
+            self.builder.Utilities.pretty_print_conversation(messages)
             return text_response
 
         ### OR RETURN ERROR

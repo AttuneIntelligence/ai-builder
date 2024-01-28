@@ -8,12 +8,12 @@ from bin.utilities import *
 
 class LLaVA_Vision:
     def __init__(self,
-                 assistant):
-        self.assistant = assistant
+                 builder):
+        self.builder = builder
         
         ### RUNPOD CONNECTION
         self.runpod_port = "5000"
-        self.model_path = f"https://{self.assistant.vision_runpod_id}-{self.runpod_port}.proxy.runpod.net"
+        self.model_path = f"https://{self.builder.vision_runpod_id}-{self.runpod_port}.proxy.runpod.net"
         self.max_tokens = 512
         self.temperature = 0.2
 
@@ -23,11 +23,11 @@ class LLaVA_Vision:
                    temperature=0.2):
         ### SEND TO RUNPOD LLAVA MODEL
         payload = {
-            'model_path': self.assistant.vision_model_name,
-            'image_base64': self.assistant.Utilities.encode_image_to_base64(image_path),
+            'model_path': self.builder.vision_model_name,
+            'image_base64': self.builder.Utilities.encode_image_to_base64(image_path),
             'prompt': f"{question}\nYou should be descript, precise, and comprehensive in your response.",
             'temperature': temperature,
-            'max_new_tokens': self.assistant.max_tokens
+            'max_new_tokens': self.builder.max_tokens
         }
         timer = Timer()
         r = requests.post(

@@ -9,16 +9,16 @@ from bin.utilities import *
 
 class ContextEngineering:
     def __init__(self,
-                 assistant):
-        self.assistant = assistant
-        self.prompt_templates_dir = f"{self.assistant.home}src/chat_templates/templates/"
+                 builder):
+        self.builder = builder
+        self.prompt_templates_dir = f"{self.builder.home}src/chat_templates/templates/"
 
     def agent_prompt_template(self,
                               question):
         messages = []
-        if self.assistant.try_self_hosted:
+        if self.builder.try_self_hosted:
             ### TOOLSET METADATA FOR OPEN AGENT
-            toolset_metadata = self.assistant.Toolkit.load_tool_metadata()
+            toolset_metadata = self.builder.Toolkit.load_tool_metadata()
             messages.append({"role": "function_metadata", "content": toolset_metadata})
         
         ### SYSTEM PROMPT

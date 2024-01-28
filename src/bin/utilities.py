@@ -7,8 +7,8 @@ import requests
 
 class Utilities:
     def __init__(self,
-                 assistant):
-        self.assistant = assistant
+                 builder):
+        self.builder = builder
             
     ###################
     ### API TESTING ###
