@@ -101,7 +101,7 @@ The largest barrier-to-entry for working with open source LLMs lies in provision
 
 ## Building Your Environment
 
-#### (a) Developing with Gitpod
+### (a) Developing with Gitpod
 
 Attune Engineering configures all of our repositories to work with [Gitpod](https://www.gitpod.io/docs/configure/workspaces), enabling you to deploy a preconfigured development environment to provisioned cloud resources. You are granted a free 50 hours of development per month, which is more than enough to get started.
 
@@ -114,7 +114,7 @@ Once working in Gitpod, you can launch the Jupyter Lab environment with the foll
   source /workspace/ai-builder/bin/gitpod-jupyter-lab.sh
   ```
 
-#### (b) Running Docker on your local machine
+### (b) Running Docker on your local machine
 
 1. Install [Docker](https://docs.docker.com/get-docker/) on your machine if it is not already installed.
 
@@ -159,7 +159,7 @@ Once working in Gitpod, you can launch the Jupyter Lab environment with the foll
     REGISTRY_IMAGE="ghcr.io/YOUR_GITHUB_USERNAME/ai-builder"
     ```
 
-#### (c) Building the environment locally
+### (c) Building the environment locally
 
 This is not ideal, as all of the source code is organized relative to the container's home directory within (`/workspace/ai-builder/src`). If you're simply looking to adapt the code to your own purposes, however, you can simply install the necessary requirements and update the `PYTHONPATH` to point to your `src` directory.
     ```bash
@@ -170,8 +170,31 @@ This is not ideal, as all of the source code is organized relative to the contai
 
 ## Usage 
 
+### Setting API Keys 
+
+You must make the following API keys available as environment variables. This can be done by creating a `.env`` file in your environment with the following keys, or otherwise by adding them to your environment.
+  ```bash
+  OPENAI_API_KEY="xxx"
+  HUGGING_FACE_HUB_TOKEN="xxx" ### if deploying a private a gated model
+  ```
+
+This is all that is required to then instantiate the `AIBuilder` class, as defined in `src/builder.py`
+
+### Building in Jupyter Lab
+
+With [Jupyter Lab launched](#building-your-environment), check out `dev.ipynb` to begin exploring the code.
+
+### Testing with Streamlit
+
+If you're looking to toy around with a web interface deployed to your local host via the Docker environment, you can launch the Streamlit app with the following...
+  ```bash
+  source /workspace/ai-builder/bin/launch-streamlit.sh
+  ```
+
 ---
 
 ## License
+
+This project is licensed under the terms of the [MIT](https://github.com/AttuneEngineering/ai-builder/blob/main/LICENSE) license. For more details, please see the LICENSE file in this repository.
 
 ---
