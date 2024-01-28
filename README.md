@@ -185,7 +185,14 @@ This is all that is required to then instantiate the `AIBuilder` class, as defin
 
 ### Building in Jupyter Lab
 
-With [Jupyter Lab launched](#building-your-environment), check out `dev.ipynb` to begin exploring the code.
+  ```bash
+  ### IN GITPOD
+  source /workspace/ai-builder/bin/gitpod-launch-jupyter.sh
+
+  ### LOCALLY BUILT IAMGE
+  source /workspace/ai-builder/bin/launch-jupyter.sh
+  ```
+Check out `dev.ipynb` to get started.
 
 ### Testing with Streamlit
 
