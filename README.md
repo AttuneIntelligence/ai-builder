@@ -76,7 +76,7 @@ This toolkit-based approach to interfacing with LLMs makes it easier to build co
   * Intend to build an application that can scale without being limited by OpenAI's API; _or_
   * Want to build a multi-model architecture across your own GPU hardware...
 
-...**this** is where you may want to rent a GPU server, set up your own API, and make queries to that API. If you're interested in this approach, we've created a collection of templates for you to hit the ground running!
+..._**this**_ is where you may want to rent a GPU server, set up your own API, and make queries to that API. If you're interested in this approach, we've created a collection of templates for you to hit the ground running!
 
 ---
 
@@ -86,6 +86,7 @@ This toolkit-based approach to interfacing with LLMs makes it easier to build co
 - [Usage](#usage)
 - [License](#license)
 
+---
 ---
 
 # API Server Deployments
@@ -98,7 +99,6 @@ The largest barrier-to-entry for working with open source LLMs lies in provision
     <li>Find all of the README files in <code>server-docs/</code>.</li>
   </ul>
 
----
 ---
 ---
 
@@ -175,7 +175,6 @@ This is not ideal, as all of the source code is organized relative to the contai
     
 ---
 ---
----
 
 # Usage 
 
@@ -209,13 +208,11 @@ If you're looking to toy around with a web interface deployed to your local host
 
 ---
 ---
----
 
 # License
 
 This project is licensed under the terms of the [MIT License](https://github.com/AttuneEngineering/ai-builder/blob/main/LICENSE).
 Happy Hacking!
 
----
 ---
 ---
