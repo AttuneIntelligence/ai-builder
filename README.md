@@ -88,7 +88,7 @@ This toolkit-based approach to interfacing with LLMs makes it easier to build co
 
 ---
 
-## API Server Deployments
+# API Server Deployments
 
 The largest barrier-to-entry for working with open source LLMs lies in provisioning your model to GPUs that can be made available at an API. <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> simplifies much of this process, and we have created a collection of ready-to-deploy templates to get you set up with an API endpoint in minutes.
   <ul>
@@ -99,8 +99,10 @@ The largest barrier-to-entry for working with open source LLMs lies in provision
   </ul>
 
 ---
+---
+---
 
-## Building Your Environment
+# Building Your Environment
 
 ### (a) Developing with Gitpod
 
@@ -172,8 +174,10 @@ This is not ideal, as all of the source code is organized relative to the contai
     ```
     
 ---
+---
+---
 
-## Usage 
+# Usage 
 
 ### Setting API Keys 
 
@@ -204,10 +208,14 @@ If you're looking to toy around with a web interface deployed to your local host
   ```
 
 ---
+---
+---
 
-## License
+# License
 
 This project is licensed under the terms of the [MIT License](https://github.com/AttuneEngineering/ai-builder/blob/main/LICENSE).
 Happy Hacking!
 
+---
+---
 ---
