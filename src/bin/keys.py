@@ -11,3 +11,4 @@ def set_keys(builder):
     ### SET KEYS
     builder.HUGGING_FACE_HUB_TOKEN = os.getenv("HUGGING_FACE_HUB_TOKEN")
     builder.OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+    os.environ["TOKENIZERS_PARALLELISM"] = "false"

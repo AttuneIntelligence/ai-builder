@@ -1,0 +1,46 @@
+{
+    "OpenAI": {
+        "openai_gpt4_instruct": {
+            "model_name": "gpt-4-0125-preview",
+            "builder_class": "OpenAI_Instruct",
+            "ask_inputs": [
+                {"name": "question", "required": true},
+                {"name": "system_prompt", "required": false}
+            ]
+        },
+        "openai_gpt4_vision": {
+            "model_name": "gpt-4-vision-preview",
+            "builder_class": "OpenAI_Vision",
+            "ask_inputs": [
+                {"name": "question", "required": true},
+                {"name": "image_path", "required": true},
+                {"name": "system_prompt", "required": false}
+            ]
+        }
+    },
+    "Runpod": {
+        "mixtral8x7b_instruct": {
+            "model_name": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+            "runpod_id": "9hvaza1j0bep52",
+            "runpod_port": "8080",
+            "server_template": "server-docs/instruct-models/Mixtral8x7B_Instruct_README.md",
+            "builder_class": "Mixtral7x8B_Instruct",
+            "ask_inputs": [
+                {"name": "question", "required": true},
+                {"name": "system_prompt", "required": false}
+            ]
+        },
+        "llava_vision": {
+            "model_name": "liuhaotian/llava-v1.5-7b",
+            "runpod_id": "zqstrr5s1xe60z",
+            "runpod_port": "5000",
+            "server_template": "server-docs/vision-models/LLaVA_README.md",
+            "builder_class": "LLaVA_Vision",
+            "ask_inputs": [
+                {"name": "question", "required": true},
+                {"name": "image_path", "required": true},
+                {"name": "system_prompt", "required": false}
+            ]
+        }
+    }
+}

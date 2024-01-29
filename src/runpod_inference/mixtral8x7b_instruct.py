@@ -13,10 +13,69 @@ from bin.utilities import *
 class Mixtral7x8B_Instruct:
     def __init__(self,
                  builder,
-                 model_url_m):
-        ### SETUP LLAVA PARAMETERS
+                 model_config):
         self.builder = builder
-        self.tokenizer = AutoTokenizer.from_pretrained(self.builder.instruct_model_name, trust_remote_code=True)
+        self.model_config = model_config
+        self.tokenizer = AutoTokenizer.from_pretrained(self.model_config["model_name"], trust_remote_code=True)
+        
+    # @retry(wait=wait_random_exponential(multiplier=1, max=40), stop=stop_after_attempt(3))
+    def ask(self, 
+            question,
+            system_prompt=None):
+        timer = Timer()
+        
+        ### CREATE MESSAGES
+        messages = self.builder.ContextEngineering.instruct_prompt_template(question, system_prompt=system_prompt)
+        if self.builder.verbose:
+            for message in messages:
+                lab_print(message)
+                
+        ### FORMAT INPUT
+        formatted_messages = self.format_messages(messages)
+        
+        json_payload = json.dumps({
+            "inputs": formatted_messages, 
+            "parameters": {
+                "max_new_tokens": self.builder.max_tokens, 
+                "do_sample": False
+            }
+        })
+
+        ### SEND TO RUNPOD MIXTRAL 7x8B
+        if self.builder.streaming:
+            endpoint = "/generate_stream"
+        else:
+            endpoint = "/generate"
+        try:
+            curl_command = f"""
+            curl -s {self.model_config["model_url"]}{endpoint} \
+                -X POST \
+                -d '{json_payload}' \
+                -H 'Content-Type: application/json'
+            """
+            response = subprocess.run(curl_command, shell=True, check=True, stdout=subprocess.PIPE)
+            time_taken = timer.get_elapsed_time()
+
+            ### DECODE RESPONSE
+            response = response.stdout.decode()
+            text_response = json.loads(response).get("generated_text", "No generated text found")
+            response_message = {"role": "assistant", "content": text_response}
+            messages.append(response_message)
+            if self.builder.verbose:
+                lab_print(response_message)
+
+            ### TRACK COMPLETION METADATA
+            tokens_generated = len(self.tokenizer.encode(text_response))
+            tokens_per_second = tokens_generated / time_taken if time_taken > 0 else 0
+            print(f"Total Time Taken: {time_taken:.2f} seconds")
+            print(f"Tokens per Second: {tokens_per_second:.2f}")
+            return text_response
+
+        ### OR RETURN ERROR
+        except subprocess.CalledProcessError as e:
+            print("Unable to generate ChatCompletion response")
+            print(f"Exception: {e}")
+            return None
 
     def format_messages(self,
                         messages):
@@ -45,54 +104,3 @@ class Mixtral7x8B_Instruct:
                 formatted_string += BOS_token
                 formatted_string += B_INST
         return formatted_string
-        
-    @retry(wait=wait_random_exponential(multiplier=1, max=40), stop=stop_after_attempt(3))
-    def ask(self, 
-            question=None,
-            system_prompt=None):
-        timer = Timer()
-        
-        ### CREATE MESSAGES
-        if question == None:
-            question = self.builder.question
-        messages = self.builder.ContextEngineering.instruct_prompt_template(question, system_prompt=system_prompt)
-
-        ### FORMAT INPUT
-        formatted_messages = self.format_messages(messages)
-        json_payload = json.dumps({
-            "inputs": formatted_messages, 
-            "parameters": {
-                "max_new_tokens": self.builder.max_tokens, 
-                "do_sample": False
-            }
-        })
-
-        ### SEND TO RUNPOD MIXTRAL 7x8B
-        try:
-            curl_command = f"""
-            curl -s {self.model_path}/generate \
-                -X POST \
-                -d '{json_payload}' \
-                -H 'Content-Type: application/json'
-            """
-            response = subprocess.run(curl_command, shell=True, check=True, stdout=subprocess.PIPE)
-            time_taken = timer.get_elapsed_time()
-
-            ### DECODE RESPONSE
-            response = response.stdout.decode()
-            text_response = json.loads(response).get("generated_text", "No generated text found")
-            messages.append({"role": "assistant", "content": text_response})
-
-            ### TRACK COMPLETION METADATA
-            tokens_generated = len(response)/4 
-            tokens_per_second = tokens_generated / time_taken if time_taken > 0 else 0
-            print(f"Total Time Taken: {time_taken:.2f} seconds")
-            print(f"Tokens per Second: {tokens_per_second:.2f}")
-            self.builder.Utilities.pretty_print_conversation(messages)
-            return text_response
-
-        ### OR RETURN ERROR
-        except subprocess.CalledProcessError as e:
-            print("Unable to generate ChatCompletion response")
-            print(f"Exception: {e}")
-            return None

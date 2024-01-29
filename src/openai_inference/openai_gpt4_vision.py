@@ -12,15 +12,19 @@ from bin.utilities import *
 
 class OpenAI_Vision:
     def __init__(self,
-                 builder):
+                 builder,
+                 model_config):
         self.builder = builder
+        self.model_config = model_config
 
-    def vision_completion(self,
-                          question, 
-                          image_path):
-        ### SETUP API CALL
+    def ask(self,
+            question, 
+            image_path,
+            system_prompt=None):
         timer = Timer()
-        prompt = f"{question}\nYou should be descript, precise, and comprehensive in your response."
+
+        ### CREATE PROMPT
+        messages = self.builder.ContextEngineering.vision_prompt_template(question, system_prompt=system_prompt)
         b64_image = self.builder.Utilities.encode_image_to_base64(image_path)
 
         try:
@@ -30,14 +34,14 @@ class OpenAI_Vision:
                 "Authorization": f"Bearer {self.builder.OPENAI_API_KEY}"
             }
             payload = {
-                "model": self.builder.gpt_vision_model,
+                "model": self.model_config["model_name"],
                 "messages": [
                     {
                         "role": "user",
                         "content": [
                             {
                                 "type": "text",
-                                "text": prompt
+                                "text": question
                             },
                             {
                                 "type": "image_url",

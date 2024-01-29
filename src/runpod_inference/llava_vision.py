@@ -20,7 +20,7 @@ class LLaVA_Vision:
     def ask(self, 
             question, 
             image_path,
-            temperature=0.2):
+            system_prompt=None):
         ### SEND TO RUNPOD LLAVA MODEL
         payload = {
             'model_path': self.builder.vision_model_name,

@@ -193,7 +193,7 @@ This is all that is required to then instantiate the `AIBuilder` class, as defin
   ### IN GITPOD
   launch-jupyter
 
-  ### LOCALLY BUILT IAMGE
+  ### LOCALLY BUILT IMAGE
   source /workspace/ai-builder/bin/jupyter-lab.sh
   ```
 Check out `dev.ipynb` to get started.

@@ -4,6 +4,9 @@ import json
 from termcolor import colored
 from IPython.display import Markdown, display
 import requests
+import os, sys
+import importlib.util
+import pkgutil
 
 class Utilities:
     def __init__(self,
@@ -38,7 +41,6 @@ class Utilities:
         with open(image_path, 'rb') as image_file:
             return str(base64.b64encode(image_file.read()).decode('utf-8'))
 
-            
 #######################
 ### UNIVERSAL TIMER ###
 #######################
@@ -58,6 +60,29 @@ class Timer:
 #########################
 def printmd(string):
     display(Markdown(string))
+
+def lab_print(message):
+    role_to_color = {
+        "system": "red",
+        "user": "green",
+        "assistant": "blue",
+        "tool": "magenta",
+        "function": "magenta",
+    }
+    color = role_to_color.get(message["role"], "black")
+    
+    # Build HTML with color
+    content = message.get("content", "")
+    if message["role"] == "assistant" and message.get("function_call"):
+        content = message["function_call"]
+    
+    # Replace new lines with <br> for HTML rendering
+    content = content.replace("\n", "<br>")
+
+    html_content = f"<span style='color: {color};'>{content}</span>"
+    
+    # Display as Markdown
+    display(Markdown(html_content))
 
 def pretty_print(message):
     role_to_color = {
