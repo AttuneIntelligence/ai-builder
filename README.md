@@ -1,5 +1,3 @@
-
-import { div } from 'markdown';
 <div align="center">
   <img src="assets/images/ai-builder-header.jpg" alt="AI-Builder" />
 </div>
@@ -39,7 +37,7 @@ import { div } from 'markdown';
   </a>
   <!-- Commit Activity -->
   <a href="https://github.com/attuneengineering/ai-builder/commits" target="_blank">
-    <img src="https://img.shields.io/github/commit-activity/y/attuneengineering/ai-builder" alt="GitHub commits">
+    <img src="https://img.shields.io/github/commit-activity/m/attuneengineering/ai-builder" alt="GitHub commits">
   </a>
   <!-- Last Commit -->
   <a href="https://github.com/attuneengineering/ai-builder/commits" target="_blank">
