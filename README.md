@@ -115,6 +115,8 @@ Once working in Gitpod, you can launch the Jupyter Lab environment with the foll
   launch-jupyter
   ```
 
+---
+
 ### (b) Running Docker on your local machine
 
 1. Install [Docker](https://docs.docker.com/get-docker/) on your machine if it is not already installed.
@@ -159,6 +161,8 @@ Once working in Gitpod, you can launch the Jupyter Lab environment with the foll
     ```
     REGISTRY_IMAGE="ghcr.io/YOUR_GITHUB_USERNAME/ai-builder"
     ```
+
+---
 
 ### (c) Building the environment locally
 
