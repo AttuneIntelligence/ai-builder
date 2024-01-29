@@ -183,7 +183,6 @@ This is not ideal, as all of the source code is organized relative to the contai
 You must make the following API keys available as environment variables. This can be done by creating a `.env` file with the following keys, or otherwise by adding them to your environment.
   ```bash
   OPENAI_API_KEY="xxx"
-  HUGGING_FACE_HUB_TOKEN="xxx" ### if deploying a private a gated model
   ```
 
 This is all that is required to then instantiate the `AIBuilder` class, as defined in `src/builder.py`
@@ -192,7 +191,7 @@ This is all that is required to then instantiate the `AIBuilder` class, as defin
 
   ```bash
   ### IN GITPOD
-  source /workspace/ai-builder/bin/gitpod-jupyter-lab.sh
+  launch-jupyter
 
   ### LOCALLY BUILT IAMGE
   source /workspace/ai-builder/bin/jupyter-lab.sh
@@ -212,6 +211,7 @@ If you're looking to toy around with a web interface deployed to your local host
 # License
 
 This project is licensed under the terms of the [MIT License](https://github.com/AttuneEngineering/ai-builder/blob/main/LICENSE).
+
 Happy Hacking!
 
 ---
