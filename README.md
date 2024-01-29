@@ -180,7 +180,8 @@ This is not ideal, as all of the source code is organized relative to the contai
 
 ### Setting API Keys 
 
-You must make the following API keys available as environment variables. This can be done by creating a `.env` file with the following keys, or otherwise by adding them to your environment.
+> [!IMPORTANT]
+> You must make the following API keys available as environment variables. This can be done by creating a `.env` file with the following keys, or otherwise by adding them to your environment.
   ```bash
   OPENAI_API_KEY="xxx"
   ```
