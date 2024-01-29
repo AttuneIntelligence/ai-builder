@@ -1,8 +1,15 @@
 image: ghcr.io/attuneengineering/ai-builder:main
 ports:
   - port: 8888
-    onOpen: ignore
+    onOpen: open-browser
   - port: 5000
     onOpen: ignore
 tasks:
-  - command: git remote set-url origin https://$GITHUB_TOKEN@github.com/AttuneEngineering/ai-builder.git && echo "alias launch-jupyter='source /workspace/ai-builder/bin/gitpod-jupyter-lab.sh'" >> ~/.bashrc && source ~/.bashrc && cowsay namaste 🙏
+  - command: >
+      git remote set-url origin https://$GITHUB_TOKEN@github.com/AttuneEngineering/ai-builder.git &&
+      echo "alias launch-jupyter='source /workspace/ai-builder/bin/gitpod-jupyter-lab.sh'" >> ~/.bashrc &&
+      source ~/.bashrc &&
+      tmux new-session -d -s my_session 'launch-jupyter' \; \
+      split-window -h \; \
+      send-keys -t 1 'cowsay namaste 🙏' C-m \; \
+      select-pane -t 0
