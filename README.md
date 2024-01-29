@@ -168,10 +168,10 @@ Once working in Gitpod, you can launch the Jupyter Lab environment with the foll
 
 ### (c) Building the environment locally
 
-This is not ideal, as all of the source code is organized relative to the container's home directory within (`/workspace/ai-builder/src`). If you're simply looking to adapt the code to your own purposes, however, you can simply install the necessary requirements and update the `PYTHONPATH` to point to your `src` directory.
-    ```bash
-    pip install -r requirements.txt
-    ```
+This is not ideal, as all of the source code is organized relative to the container's home directory within (`/workspace/ai-builder/src`). If you're simply looking to adapt the code to your own purposes, however, you can simply install the necessary requirements and update your environment's `PYTHONPATH` to point to your local `src` directory.
+  ```bash
+  pip install -r requirements.txt
+  ```
     
 ---
 ---
