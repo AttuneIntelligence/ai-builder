@@ -17,7 +17,7 @@ This One-Click-Template is built off the [Docker Image for LLaVA](https://github
 
 ## DEPLOYMENT
 
-LLaVA will run with this configuration on an A6000 or an A100. It is suggested to run on at least 48 GB RAM.
+I recommend a 2 A6000s, or a GPU with more than 48GB of VRAM if you want to use the 13b model, and a GPU with at least 24GB of VRAM if you want to use the 7b model.
 
 There are three model options for running inference:
 
