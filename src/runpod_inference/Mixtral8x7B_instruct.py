@@ -12,11 +12,10 @@ from bin.utilities import *
 
 class Mixtral7x8B_Instruct:
     def __init__(self,
-                 builder):
+                 builder,
+                 model_url_m):
         ### SETUP LLAVA PARAMETERS
         self.builder = builder
-        self.runpod_port = "8080"
-        self.model_path = f"https://{self.builder.instruct_runpod_id}-{self.runpod_port}.proxy.runpod.net"
         self.tokenizer = AutoTokenizer.from_pretrained(self.builder.instruct_model_name, trust_remote_code=True)
 
     def format_messages(self,
@@ -48,9 +47,9 @@ class Mixtral7x8B_Instruct:
         return formatted_string
         
     @retry(wait=wait_random_exponential(multiplier=1, max=40), stop=stop_after_attempt(3))
-    def text_completion(self, 
-                        question=None,
-                        system_prompt=None):
+    def ask(self, 
+            question=None,
+            system_prompt=None):
         timer = Timer()
         
         ### CREATE MESSAGES
