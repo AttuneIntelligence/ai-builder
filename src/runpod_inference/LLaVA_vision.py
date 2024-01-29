@@ -17,10 +17,10 @@ class LLaVA_Vision:
         self.max_tokens = 512
         self.temperature = 0.2
 
-    def llm_vision(self, 
-                   question, 
-                   image_path,
-                   temperature=0.2):
+    def ask(self, 
+            question, 
+            image_path,
+            temperature=0.2):
         ### SEND TO RUNPOD LLAVA MODEL
         payload = {
             'model_path': self.builder.vision_model_name,

@@ -13,23 +13,6 @@ class ContextEngineering:
         self.builder = builder
         self.prompt_templates_dir = f"{self.builder.home}src/chat_templates/templates/"
 
-    def agent_prompt_template(self,
-                              question):
-        messages = []
-        if self.builder.try_self_hosted:
-            ### TOOLSET METADATA FOR OPEN AGENT
-            toolset_metadata = self.builder.Toolkit.load_tool_metadata()
-            messages.append({"role": "function_metadata", "content": toolset_metadata})
-        
-        ### SYSTEM PROMPT
-        with open(f"{self.prompt_templates_dir}agent_system_template.txt", 'r') as file:
-            system_prompt = file.read()
-        messages.append({"role": "system", "content": system_prompt})
-
-        ### RETURN WITH QUESTION
-        messages.append({"role": "user", "content": question})
-        return messages
-
     def instruct_prompt_template(self,
                                  question,
                                  system_prompt=None):
@@ -39,6 +22,22 @@ class ContextEngineering:
             messages.append({"role": "system", "content": system_prompt})
         else:
             with open(f"{self.prompt_templates_dir}instruct_system_template.txt", 'r') as file:
+                system_prompt = file.read()
+            messages.append({"role": "system", "content": system_prompt})
+
+        ### RETURN WITH QUESTION
+        messages.append({"role": "user", "content": question})
+        return messages
+
+    def summarize_prompt_template(self,
+                                  question,
+                                  system_prompt=None):
+        ### SYSTEM PROMPT
+        messages = []
+        if system_prompt:
+            messages.append({"role": "system", "content": system_prompt})
+        else:
+            with open(f"{self.prompt_templates_dir}summarize_system_template.txt", 'r') as file:
                 system_prompt = file.read()
             messages.append({"role": "system", "content": system_prompt})
 

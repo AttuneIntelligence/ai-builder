@@ -12,20 +12,21 @@ from bin.utilities import *
 
 class Mixtral7x8B_Summarization:
     def __init__(self,
-                 assistant):
-        ### SETUP LLAVA PARAMETERS
-        self.assistant = assistant
-        self.model_path = f"https://{self.assistant.mixtral_summarization_runpod_id}-xxxx.proxy.runpod.net"
-        self.model_name = "xxxx"
+                 builder):
+        self.builder = builder
 
     @retry(wait=wait_random_exponential(multiplier=1, max=40), stop=stop_after_attempt(3))
-    def long_context_summarization(self, 
-                                   content):
+    def ask(self, 
+            content,
+            system_prompt=None):
         timer = Timer()
+        
+        ### CREATE MESSAGES
+        if question == None:
+            question = self.builder.question
+        messages = self.builder.ContextEngineering.summarize_prompt_template(question, system_prompt=system_prompt)
+        
         ### FORMAT INPUT
-        messages = []
-        messages.append({"role": "system", "content": "You are a summarization machine..."})
-        messages.append({"role": "user", "content": content})
         tokenizer = AutoTokenizer.from_pretrained(
             self.model_name, 
             trust_remote_code=True
@@ -39,7 +40,7 @@ class Mixtral7x8B_Summarization:
             }
         })
 
-        ### SEND TO RUNPOD MIXTRAL 8x7B
+        ### SEND TO LONG-CONTEXT MIXTRAL
         try:
             curl_command = f"""
             curl -s {self.model_path} \

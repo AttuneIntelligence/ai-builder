@@ -14,10 +14,12 @@ from openai_inference.OpenAI_instruct import *
 
 class AIBuilder:
     def __init__(self,
-                 try_self_hosted=True,
+                 instruct_model=None,
+                 vision_model=None,
                  verbose=False):
         ### INITIALIZATION
-        self.try_self_hosted = try_self_hosted
+        self.instruct_model = instruct_model
+        self.vision_model = vision_model
         self.verbose = verbose
         set_keys(self)
         self.timestamp = datetime.now().isoformat(timespec='minutes')
@@ -33,62 +35,75 @@ class AIBuilder:
         #############################
         ### MODEL API CONNECTIONS ###
         #############################
-        ### RUNPOD VISION
-        self.vision_runpod_id = "9ngplbfr3cqaiq"
-        self.vision_model_name = "liuhaotian/llava-v1.5-7b"
-        self.vision_model_url = f"https://{self.vision_runpod_id}-5000.proxy.runpod.net"
+        self.available_models = {
+            "Mixtral8x7B-Instruct": {
+                "model_name": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+                "runpod_id": "",
+                "runpod_port": "8080",
+                "server_template": "server-docs/instruct-models/Mixtral8x7B_Instruct_README.md",
+                "builder_class": Mixtral7x8B_Instruct,
+                "multimodal": False
+            },
+            "LLaVA-Vision": {
+                "model_name": "liuhaotian/llava-v1.5-7b",
+                "runpod_id": "",
+                "runpod_port": "5000",
+                "server_template": "server-docs/vision-models/LLaVA_README.md",
+                "builder_class": LLaVA_Vision,
+                "multimodal": True
+            }
+        }
 
-        ### RUNPOD INSTRUCT
-        self.instruct_runpod_id = "d5eqjxunt7a8p0"
-        self.instruct_model_name = "mistralai/Mixtral-8x7B-Instruct-v0.1"
-        self.instruct_model_url = f"https://{self.instruct_runpod_id}-8080.proxy.runpod.net"
-
-        ### OPENAI INFERENCE
-        self.gpt_model = "gpt-4-1106-preview"
+        ### GPT MODELS
+        self.gpt_model = "gpt-4-0125-preview"
         self.gpt_vision_model = "gpt-4-vision-preview"
-
-        ### INITIALIZE CLASS WITH MODELS
-        self.instantiate_model_apis()
+        self.ask_gpt4 = OpenAI_Instruct(self)
+        self.ask_gpt4_vision = OpenAI_Vision(self)
 
     def personalize_message_thread(self,
                                    user_json):
         self.human_name = user_json["full_name"]
-        self.username = user_json["username"]
         self.question = user_json["question"]
         
     #########################
     ### CONNECT TO MODELS ###
     #########################
-    def instantiate_model_apis(self):
-        print(f"Connecting to LLM APIs...")
-        ### ATTEMPT RUNPOD CONNECTION...
-        if self.try_self_hosted:   
-            ### INSTRUCT
-            if self.Utilities.test_api_up(self.instruct_model_url):
-                self.Instruct = Mixtral7x8B_Instruct(self)
-                print(f"=> Instruct Model: {self.instruct_model_name}")
-            else:
-                self.Instruct = OpenAI_Instruct(self)
-                print(f"=> Instruct Model: {self.gpt_model} (failed to connect to {self.instruct_model_name})")
-                
-            ### VISION
-            if self.Utilities.test_api_up(self.vision_model_url):
-                self.Vision = LLaVA_Vision(self)
-                print(f"=> Vision Model: {self.vision_model_name}")
-            else:
-                self.Vision = OpenAI_Vision(self)
-                print(f"=> Vision Model: {self.gpt_vision_model} (failed to connect to {self.vision_model_name})")
-
-
-        ### ...OR JUST CONNECT TO OPENAI
+    def instantiate_model(self,
+                          model_key):
+        if self.model_key not in self.available_models:
+            return f"[ERROR] unsupported model name provided {self.instruct_model_name}"
         else:
+            runpod_id = self.available_instruct_models[self.instruct_model]["runpod_id"]
+            model_name = self.available_instruct_models[self.instruct_model]["model_name"]
+            model_port = self.available_instruct_models[self.instruct_model]["runpod_port"]
+            model_url = f"https://{self.instruct_runpod_id}-{self.instruct_model_port}.proxy.runpod.net"
+            model_class = self.available_instruct_models[self.instruct_model]["builder_class"]
+            ### TEST API
+            if self.Utilities.test_api_up(model_url):
+                return model_class
+
+    def instantiate_vision_model(self):
+        ### DEFAULT TO OPENAI
+        if not self.instruct_model:   
             self.Instruct = OpenAI_Instruct(self)
-            self.Vision = OpenAI_Vision(self)
-            print(f"=> Vision Model: {self.gpt_vision_model}")
             print(f"=> Instruct Model: {self.gpt_model}")
-
-
-
+        else:
+            ### IDENTIFY MODEL
+            if self.instruct_model not in self.available_instruct_models:
+                self.Instruct = OpenAI_Instruct(self)
+                print(f"=> Instruct Model: {self.gpt_model} (unsupported model name provided {self.instruct_model_name})")
+            else:
+                self.instruct_runpod_id = self.available_instruct_models[self.instruct_model]["runpod_id"]
+                self.instruct_model_name = self.available_instruct_models[self.instruct_model]["model_name"]
+                self.instruct_model_port = self.available_instruct_models[self.instruct_model]["runpod_port"]
+                self.instruct_model_url = f"https://{self.instruct_runpod_id}-{self.instruct_model_port}.proxy.runpod.net"
+                ### TEST API
+                if self.Utilities.test_api_up(self.instruct_model_url):
+                    self.Instruct = LLaVA_Vision(self)
+                    print(f"=> Instruct Model: {self.instruct_model_name}")
+                else:
+                    self.Instruct = OpenAI_Instruct(self)
+                    print(f"=> Instruct Model: {self.gpt_model} (failed to connect to {self.instruct_model_name})")
 
 
     
