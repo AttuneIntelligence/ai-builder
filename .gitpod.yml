@@ -7,3 +7,4 @@ ports:
 tasks:
   - init: git remote set-url origin https://$GITHUB_TOKEN@github.com/AttuneEngineering/ai-builder.git
   - command: cowsay namaste 🙏
+  - command: echo "alias launch-jupyter='source /workspace/ai-builder/bin/gitpod-jupyter-lab.sh'" >> ~/.bashrc && source ~/.bashrc
