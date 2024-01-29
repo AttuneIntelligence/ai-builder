@@ -54,7 +54,7 @@
     <a href="https://www.youtube.com/channel/UCNMrLvZji3XeWghxsAWKXjg"><img src="https://img.shields.io/youtube/channel/subscribers/UCNMrLvZji3XeWghxsAWKXjg?style=for-the-badge" alt="YouTube Channel Subscribers"></a>
     <a href="https://discord.gg/sAbbvBNU"><img src="https://img.shields.io/discord/1199192124290257058.svg?style=for-the-badge&label=Join%20Community&color=7289DA" alt="Join Community Badge"/></a><br>
     <em>created and maintained by <a href="https://github.com/mrbende" target="_blank">Reed Bender</a></em></p>
-    <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
+    <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder" target="_blank"<img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
 </div>
 
 ---
@@ -107,12 +107,12 @@ The largest barrier-to-entry for working with open source LLMs lies in provision
 Attune Engineering configures all of our repositories to work with [Gitpod](https://www.gitpod.io/docs/configure/workspaces), enabling you to deploy a preconfigured development environment to provisioned cloud resources. You are granted a free 50 hours of development per month, which is more than enough to get started.
 
 <div align="center">
-    <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
+    <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder" target="_blank"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
 </div>
 
-Once working in Gitpod, you can launch the Jupyter Lab environment with the following command...
+Once working in Gitpod, you can launch the Jupyter Lab environment with the following...
   ```bash
-  source /workspace/ai-builder/bin/gitpod-jupyter-lab.sh
+  launch-jupyter
   ```
 
 ### (b) Running Docker on your local machine
