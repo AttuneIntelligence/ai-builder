@@ -25,6 +25,7 @@ class ContextEngineering:
             messages.append({"role": "system", "content": system_prompt})
 
         ### RETURN WITH QUESTION
+        question = question.replace("'", "").replace('"', "")
         messages.append({"role": "user", "content": question})
         return messages
 
@@ -41,6 +42,7 @@ class ContextEngineering:
             messages.append({"role": "system", "content": system_prompt})
 
         ### RETURN WITH QUESTION
+        question = question.replace("'", "").replace('"', "")
         messages.append({"role": "user", "content": question})
         return messages
         
@@ -57,6 +59,7 @@ class ContextEngineering:
             messages.append({"role": "system", "content": system_prompt})
 
         ### RETURN WITH QUESTION
+        question = question.replace("'", "").replace('"', "")
         messages.append({"role": "user", "content": question})
         return messages
 

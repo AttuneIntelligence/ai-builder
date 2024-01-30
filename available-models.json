@@ -23,16 +23,29 @@
     "Runpod": {
         "Mixtral8x7B_Instruct": {
             "model_name": "mistralai/Mixtral-8x7B-Instruct-v0.1",
-            "runpod_id": "9hvaza1j0bep52",
+            "runpod_id": "vqa7ptq44dz3ih",
             "runpod_port": "8080",
             "server_template": "server-docs/instruct-models/Mixtral8x7B_Instruct_README.md",
             "inference_script": "mixtral8x7b_instruct",
-            "builder_class": "Mixtral7x8B_Instruct",
+            "builder_class": "Mixtral8x7B_Instruct",
             "ask_inputs": [
                 {"name": "question", "required": true},
                 {"name": "system_prompt", "required": false}
             ],
             "attempt": true
+        },
+        "CodeLlama_70b_Python": {
+            "model_name": "codellama/CodeLlama-70b-Python-hf",
+            "runpod_id": "xon42hixhenb7a",
+            "runpod_port": "8080",
+            "server_template": "server-docs/instruct-models/CodeLlama_README.md",
+            "inference_script": "codellama_inference",
+            "builder_class": "CodeLlama",
+            "ask_inputs": [
+                {"name": "question", "required": true},
+                {"name": "system_prompt", "required": false}
+            ],
+            "attempt": false
         },
         "BakLLaVA_Vision": {
             "model_name": "SkunkworksAI/BakLLaVA-1",
@@ -46,7 +59,7 @@
                 {"name": "image_path", "required": true},
                 {"name": "system_prompt", "required": false}
             ],
-            "attempt": true
+            "attempt": false
         },
         "LLaVA_7B_Vision": {
             "model_name": "liuhaotian/llava-v1.5-7b",

@@ -8,6 +8,7 @@ import os, sys
 import importlib.util
 import pkgutil
 import tiktoken
+from transformers import AutoTokenizer
 
 class Utilities:
     def __init__(self,
@@ -65,6 +66,8 @@ class Utilities:
         if self.builder.verbose:
             print(f"Total Time Taken: {time_taken:.2f} seconds")
             print(f"Tokens per Second: {tokens_per_second:.2f}")
+            if cost:
+                print(f"Cost ($): {cost:.3f}")
         return {
             "time (s)": time_taken,
             "ingress_tokens": ingress_tokens,
@@ -137,17 +140,16 @@ def lab_print(message):
     }
     color = role_to_color.get(message["role"], "black")
     
-    # Build HTML with color
+    ### BUILD HTML WITH COLOR
     content = message.get("content", "")
     if message["role"] == "assistant" and message.get("function_call"):
         content = message["function_call"]
-    
-    # Replace new lines with <br> for HTML rendering
     content = content.replace("\n", "<br>")
-
+    header_content = f"<span style='color: {color};'><strong>{message['role'].upper()}</strong></span>"
     html_content = f"<span style='color: {color};'>{content}</span>"
     
-    # Display as Markdown
+    ### DISPLAY AS COLORED MARKDOWN
+    display(Markdown(header_content))
     display(Markdown(html_content))
 
 def pretty_print(message):
