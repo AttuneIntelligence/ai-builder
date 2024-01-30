@@ -1,15 +1,17 @@
 {
     "OpenAI": {
-        "openai_gpt4_instruct": {
+        "GPT4_Instruct": {
             "model_name": "gpt-4-0125-preview",
+            "inference_script": "openai_gpt4_instruct",
             "builder_class": "OpenAI_Instruct",
             "ask_inputs": [
                 {"name": "question", "required": true},
                 {"name": "system_prompt", "required": false}
             ]
         },
-        "openai_gpt4_vision": {
-            "model_name": "gpt-4-vision-preview",
+        "GPT4_Vision": {
+            "model_name": "gpt-4-1106-vision-preview",
+            "inference_script": "openai_gpt4_vision",
             "builder_class": "OpenAI_Vision",
             "ask_inputs": [
                 {"name": "question", "required": true},
@@ -19,28 +21,60 @@
         }
     },
     "Runpod": {
-        "mixtral8x7b_instruct": {
+        "Mixtral8x7B_Instruct": {
             "model_name": "mistralai/Mixtral-8x7B-Instruct-v0.1",
             "runpod_id": "9hvaza1j0bep52",
             "runpod_port": "8080",
             "server_template": "server-docs/instruct-models/Mixtral8x7B_Instruct_README.md",
+            "inference_script": "mixtral8x7b_instruct",
             "builder_class": "Mixtral7x8B_Instruct",
             "ask_inputs": [
                 {"name": "question", "required": true},
                 {"name": "system_prompt", "required": false}
-            ]
+            ],
+            "attempt": true
         },
-        "llava_vision": {
-            "model_name": "liuhaotian/llava-v1.5-7b",
-            "runpod_id": "zqstrr5s1xe60z",
+        "BakLLaVA_Vision": {
+            "model_name": "SkunkworksAI/BakLLaVA-1",
+            "runpod_id": "yta4xg7i9cacjw",
             "runpod_port": "5000",
             "server_template": "server-docs/vision-models/LLaVA_README.md",
+            "inference_script": "llava_vision",
             "builder_class": "LLaVA_Vision",
             "ask_inputs": [
                 {"name": "question", "required": true},
                 {"name": "image_path", "required": true},
                 {"name": "system_prompt", "required": false}
-            ]
+            ],
+            "attempt": true
+        },
+        "LLaVA_7B_Vision": {
+            "model_name": "liuhaotian/llava-v1.5-7b",
+            "runpod_id": "",
+            "runpod_port": "5000",
+            "server_template": "server-docs/vision-models/LLaVA_README.md",
+            "inference_script": "llava_vision",
+            "builder_class": "LLaVA_Vision",
+            "ask_inputs": [
+                {"name": "question", "required": true},
+                {"name": "image_path", "required": true},
+                {"name": "system_prompt", "required": false}
+            ],
+            "attempt": false
+        },
+        "LLaVA_13B_Vision": {
+            "model_name": "liuhaotian/llava-v1.5-7b",
+            "runpod_id": "",
+            "runpod_port": "5000",
+            "server_template": "server-docs/vision-models/LLaVA_README.md",
+            "inference_script": "llava_vision",
+            "builder_class": "LLaVA_Vision",
+            "ask_inputs": [
+                {"name": "question", "required": true},
+                {"name": "image_path", "required": true},
+                {"name": "system_prompt", "required": false}
+            ],
+            "attempt": false
         }
     }
 }

@@ -37,9 +37,10 @@ class OpenAI_Instruct:
             messages=messages,
             model=self.model_config["model_name"]
         )
+        text_response = response.choices[0].message.content
         response_message = {
             "role": "assistant",
-            "content": response.choices[0].message.content
+            "content": text_response
         }
         if self.builder.verbose:
             lab_print(response_message)
@@ -47,9 +48,15 @@ class OpenAI_Instruct:
 
         ### TRACK COMPLETION METADATA
         time_taken = timer.get_elapsed_time()
-        tokens_generated = len(self.tokenizer.encode(text_response))
-        tokens_per_second = tokens_generated / time_taken if time_taken > 0 else 0
-        print(f"Total Time Taken: {time_taken:.2f} seconds")
-        print(f"Tokens per Second: {tokens_per_second:.2f}")
-        return messages
+        metadata = self.builder.Utilities.compile_metadata(
+            ingress=messages,
+            egress=text_response, 
+            time_taken=time_taken, 
+            model_name=self.model_config["model_name"]
+        )
+        return messages, metadata
+
+
+
+
 

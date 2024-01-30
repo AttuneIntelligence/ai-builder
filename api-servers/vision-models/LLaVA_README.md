@@ -38,22 +38,6 @@ You can add an environment called *MODEL* to your Docker container to specify th
 
 ---
 
-## LOGS
-LLaVA creates log files, and you can tail the log files instead of killing the services to view the logs.
-
-| Application  | Log file                          |
-| :----------- | :-------------------------------- |
-| Controller   | /workspace/logs/controller.log    |
-| Webserver    | /workspace/logs/webserver.log     |
-| Model Worker | /workspace/logs/model-worker.log  |
-
-For example:
-```
-tail -f /workspace/logs/webserver.log
-```
-
----
-
 ## INFERENCE
 ### 1. Starting Flask
 The Flask server must be started inside of your Runpod instance once all of the model weights have been downloaded and the model is ready at port 3000. Starting the Flask server will enable API requests to be sent through port 5000. 
@@ -111,5 +95,21 @@ print(text_response)
 ```
 
 You can edit the *System Prompt* by adjusting the question that goes along with the image path to extract or focus on certain elements within the image. 
+
+---
+
+## LOGS
+LLaVA creates log files, and you can tail the log files instead of killing the services to view the logs.
+
+| Application  | Log file                          |
+| :----------- | :-------------------------------- |
+| Controller   | /workspace/logs/controller.log    |
+| Webserver    | /workspace/logs/webserver.log     |
+| Model Worker | /workspace/logs/model-worker.log  |
+
+For example:
+```
+tail -f /workspace/logs/webserver.log
+```
 
 ---
