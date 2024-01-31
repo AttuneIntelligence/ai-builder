@@ -54,7 +54,7 @@
     <a href="https://www.youtube.com/channel/UCNMrLvZji3XeWghxsAWKXjg"><img src="https://img.shields.io/youtube/channel/subscribers/UCNMrLvZji3XeWghxsAWKXjg?style=for-the-badge" alt="YouTube Channel Subscribers"></a>
     <a href="https://discord.gg/sAbbvBNU"><img src="https://img.shields.io/discord/1199192124290257058.svg?style=for-the-badge&label=Join%20Community&color=7289DA" alt="Join Community Badge"/></a><br>
     <em>created and maintained by <a href="https://github.com/mrbende" target="_blank">Reed Bender</a></em></p>
-    <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
+    <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder" target="_blank"<img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
 </div>
 
 ---
@@ -64,11 +64,11 @@
 The `AI Builder` repository is a template from which you can engineer your own application with open source generative AI. This codebase forms the cornerstone of Attune Engineering's [collection of private repositories](https://attuneengineering.com/source-code.html) for designing software architectures with Large Language Models. 
 
 Within this repository you'll find:
-  * One-Click-Templates for provisioning <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> GPUs with open-source LLMs;
-  * Inference scripts for communicating with your API endpoints;
-  * DevOps configurations for managing development environments with Docker and Gitpod;
-  * Multimodal model templates for image comprehension as an open alternative to GPT-4-Vision;
-  * A Streamlit frontend for testing your deployments in the browser.
+  * **Server deployments** for renting <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> GPU servers and serving open-source LLMs;
+  * **Inference scripts** for communicating with your API endpoints and integrating your models into your software;
+  * **DevOps configurations** for managing development environments and workflow automations with Docker and Gitpod;
+  * **Multimodal templates** for running LLMs for image comprehension as an open alternative to GPT-4-Vision;
+  * **Streamlit frontends** for testing your creations locally in your browser.
 
 This toolkit-based approach to interfacing with LLMs makes it easier to build complex architectures around your own fine-tuned open source LLMs. While OpenAI's API will continue to be the cheapest option for most all use cases - _because_ they can serve hundreds of thousands of people and amortise costs over concurrent requests - there are a few reasons why you may want to consider deploying your own API... if you
   * Cannot send data to OpenAI for privacy reasons;  _or_
@@ -76,7 +76,7 @@ This toolkit-based approach to interfacing with LLMs makes it easier to build co
   * Intend to build an application that can scale without being limited by OpenAI's API; _or_
   * Want to build a multi-model architecture across your own GPU hardware...
 
-...**this** is where you may want to rent a GPU server, set up your own API, and make queries to that API. If you're interested in this approach, we've created a collection of templates for you to hit the ground running!
+..._**this**_ is where you may want to rent a GPU server, set up your own API, and make queries to that API. If you're interested in this approach, we've created a collection of templates for you to hit the ground running!
 
 ---
 
@@ -87,8 +87,9 @@ This toolkit-based approach to interfacing with LLMs makes it easier to build co
 - [License](#license)
 
 ---
+---
 
-## API Server Deployments
+# API Server Deployments
 
 The largest barrier-to-entry for working with open source LLMs lies in provisioning your model to GPUs that can be made available at an API. <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> simplifies much of this process, and we have created a collection of ready-to-deploy templates to get you set up with an API endpoint in minutes.
   <ul>
@@ -99,21 +100,24 @@ The largest barrier-to-entry for working with open source LLMs lies in provision
   </ul>
 
 ---
+---
 
-## Building Your Environment
+# Building Your Environment
 
 ### (a) Developing with Gitpod
 
 Attune Engineering configures all of our repositories to work with [Gitpod](https://www.gitpod.io/docs/configure/workspaces), enabling you to deploy a preconfigured development environment to provisioned cloud resources. You are granted a free 50 hours of development per month, which is more than enough to get started.
 
 <div align="center">
-    <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
+    <a href="https://gitpod.io/#https://github.com/AttuneEngineering/ai-builder" target="_blank"><img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open-in-Gitpod"></a>
 </div>
 
-Once working in Gitpod, you can launch the Jupyter Lab environment with the following command...
+Once working in Gitpod, you can launch the Jupyter Lab environment with the following...
   ```bash
-  source /workspace/ai-builder/bin/gitpod-jupyter-lab.sh
+  launch-jupyter
   ```
+
+---
 
 ### (b) Running Docker on your local machine
 
@@ -160,23 +164,26 @@ Once working in Gitpod, you can launch the Jupyter Lab environment with the foll
     REGISTRY_IMAGE="ghcr.io/YOUR_GITHUB_USERNAME/ai-builder"
     ```
 
-### (c) Building the environment locally
-
-This is not ideal, as all of the source code is organized relative to the container's home directory within (`/workspace/ai-builder/src`). If you're simply looking to adapt the code to your own purposes, however, you can simply install the necessary requirements and update the `PYTHONPATH` to point to your `src` directory.
-    ```bash
-    pip install -r requirements.txt
-    ```
-    
 ---
 
-## Usage 
+### (c) Building the environment locally
+
+This is not ideal, as all of the source code is organized relative to the container's home directory within (`/workspace/ai-builder/src`). If you're simply looking to adapt the code to your own purposes, however, you can simply install the necessary requirements and update your environment's `PYTHONPATH` to point to your local `src` directory.
+  ```bash
+  pip install -r requirements.txt
+  ```
+    
+---
+---
+
+# Usage 
 
 ### Setting API Keys 
 
-You must make the following API keys available as environment variables. This can be done by creating a `.env` file with the following keys, or otherwise by adding them to your environment.
+> [!IMPORTANT]
+> You must make the following API keys available as environment variables. This can be done by creating a `.env` file with the following keys, or otherwise by adding them to your environment.
   ```bash
   OPENAI_API_KEY="xxx"
-  HUGGING_FACE_HUB_TOKEN="xxx" ### if deploying a private a gated model
   ```
 
 This is all that is required to then instantiate the `AIBuilder` class, as defined in `src/builder.py`
@@ -185,9 +192,9 @@ This is all that is required to then instantiate the `AIBuilder` class, as defin
 
   ```bash
   ### IN GITPOD
-  source /workspace/ai-builder/bin/gitpod-jupyter-lab.sh
+  launch-jupyter
 
-  ### LOCALLY BUILT IAMGE
+  ### LOCALLY BUILT IMAGE
   source /workspace/ai-builder/bin/jupyter-lab.sh
   ```
 Check out `dev.ipynb` to get started.
@@ -200,10 +207,13 @@ If you're looking to toy around with a web interface deployed to your local host
   ```
 
 ---
+---
 
-## License
+# License
 
 This project is licensed under the terms of the [MIT License](https://github.com/AttuneEngineering/ai-builder/blob/main/LICENSE).
+
 Happy Hacking!
 
+---
 ---

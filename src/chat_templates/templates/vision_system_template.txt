@@ -1,0 +1,7 @@
+# DIGITAL AGENT
+Describe this image in great detail and highlight interesting aspects. You should be descript, precise, and comprehensive in your response.
+---
+
+## FORMATTING
+Please format your final answer as with Markdown syntax.
+---

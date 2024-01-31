@@ -3,107 +3,99 @@ import time
 from datetime import datetime
 
 sys.path.append('/workspace/ai-builder/src')
-from bin.keys import set_keys
 from bin.utilities import *
+from bin.keys import set_keys
 from chat_templates.prompt_engineering import *
-from runpod_inference.LLaVA_vision import *
-from runpod_inference.Mixtral8x7B_instruct import *
-from runpod_inference.Mixtral8x7B_summarization_64k import *
-from openai_inference.OpenAI_gpt_4_vision import *
-from openai_inference.OpenAI_instruct import *
+from openai_inference.openai_gpt4_instruct import *
+from openai_inference.openai_gpt4_vision import *
+from runpod_inference.mixtral8x7b_instruct import *
+from runpod_inference.llava_vision import *
+from runpod_inference.codellama_inference import *
 
 class AIBuilder:
     def __init__(self,
-                 instruct_model=None,
-                 vision_model=None,
-                 verbose=False):
+                 verbose=True,
+                 streaming=False):
         ### INITIALIZATION
-        self.instruct_model = instruct_model
-        self.vision_model = vision_model
-        self.verbose = verbose
         set_keys(self)
+        self.verbose = verbose
+        self.streaming = streaming
         self.timestamp = datetime.now().isoformat(timespec='minutes')
         self.ai_name = "Indra"
         self.home = "/workspace/ai-builder/"
+        self.prompt_templates_dir = f"{self.home}src/chat_templates/templates/"
         self.Utilities = Utilities(self)
         self.ContextEngineering = ContextEngineering(self)
-        
+
         ### HYPERPARAMETERS
         self.max_tokens = 2400
-        self.streaming = True
 
-        #############################
-        ### MODEL API CONNECTIONS ###
-        #############################
-        self.available_models = {
-            "Mixtral8x7B-Instruct": {
-                "model_name": "mistralai/Mixtral-8x7B-Instruct-v0.1",
-                "runpod_id": "",
-                "runpod_port": "8080",
-                "server_template": "server-docs/instruct-models/Mixtral8x7B_Instruct_README.md",
-                "builder_class": Mixtral7x8B_Instruct,
-                "multimodal": False
-            },
-            "LLaVA-Vision": {
-                "model_name": "liuhaotian/llava-v1.5-7b",
-                "runpod_id": "",
-                "runpod_port": "5000",
-                "server_template": "server-docs/vision-models/LLaVA_README.md",
-                "builder_class": LLaVA_Vision,
-                "multimodal": True
-            }
-        }
+        ### INSTANTIATE MODEL CONNECTIONS
+        self.init_llms()
 
-        ### GPT MODELS
-        self.gpt_model = "gpt-4-0125-preview"
-        self.gpt_vision_model = "gpt-4-vision-preview"
-        self.ask_gpt4 = OpenAI_Instruct(self)
-        self.ask_gpt4_vision = OpenAI_Vision(self)
+    #############################
+    ### CONNECT TO ALL MODELS ###
+    #############################
+    def init_llms(self):
+        ### LOAD ALL AVAILABLE MODELS
+        with open(f'{self.home}available-models.json', 'r') as file:
+            self.all_available_models = json.load(file)
 
-    def personalize_message_thread(self,
-                                   user_json):
-        self.human_name = user_json["full_name"]
-        self.question = user_json["question"]
-        
-    #########################
-    ### CONNECT TO MODELS ###
-    #########################
-    def instantiate_model(self,
-                          model_key):
-        if self.model_key not in self.available_models:
-            return f"[ERROR] unsupported model name provided {self.instruct_model_name}"
-        else:
-            runpod_id = self.available_instruct_models[self.instruct_model]["runpod_id"]
-            model_name = self.available_instruct_models[self.instruct_model]["model_name"]
-            model_port = self.available_instruct_models[self.instruct_model]["runpod_port"]
-            model_url = f"https://{self.instruct_runpod_id}-{self.instruct_model_port}.proxy.runpod.net"
-            model_class = self.available_instruct_models[self.instruct_model]["builder_class"]
-            ### TEST API
-            if self.Utilities.test_api_up(model_url):
-                return model_class
+        ### OPENAI MODELS
+        openai_models = self.all_available_models["OpenAI"].items()
+        for model_attribute, model_config in openai_models:
+            ### IMPORT CLASS FROM FILE
+            try:
+                builder_module = importlib.import_module(f"openai_inference.{model_config['inference_script']}")
+            except:
+                print(f"[Error] Unable to import module for `openai_inference.{model_config['inference_script']}`.")
+                continue
 
-    def instantiate_vision_model(self):
-        ### DEFAULT TO OPENAI
-        if not self.instruct_model:   
-            self.Instruct = OpenAI_Instruct(self)
-            print(f"=> Instruct Model: {self.gpt_model}")
-        else:
-            ### IDENTIFY MODEL
-            if self.instruct_model not in self.available_instruct_models:
-                self.Instruct = OpenAI_Instruct(self)
-                print(f"=> Instruct Model: {self.gpt_model} (unsupported model name provided {self.instruct_model_name})")
-            else:
-                self.instruct_runpod_id = self.available_instruct_models[self.instruct_model]["runpod_id"]
-                self.instruct_model_name = self.available_instruct_models[self.instruct_model]["model_name"]
-                self.instruct_model_port = self.available_instruct_models[self.instruct_model]["runpod_port"]
-                self.instruct_model_url = f"https://{self.instruct_runpod_id}-{self.instruct_model_port}.proxy.runpod.net"
+            ### SET AIBUILDER ATTRIBUTE
+            builder_class_name = model_config["builder_class"]
+            builder_class = getattr(builder_module, builder_class_name)
+            instance = builder_class(self, model_config)
+            setattr(self, model_attribute, instance)
+            print(f"[Success] Connected to the {model_attribute} API.")
+
+        ### RUNPOD-HOSTED MODELS
+        successful_connections = []
+        runpod_models = self.all_available_models["Runpod"].items()
+        for model_attribute, model_config in runpod_models:
+            if model_config["attempt"]:
+                ### LOAD MODEL CONFIG
+                model_name = model_config.get("model_name", None)
+                runpod_id = model_config.get("runpod_id", None)
+                runpod_port = model_config.get("runpod_port", None)
+                builder_class_name = model_config.get("builder_class", None)
+                if None in [model_name, runpod_id, runpod_port, builder_class_name]:
+                    print(f"[Error] Missing required model configuration parameters for {module_name}.")
+                    continue
+                
+                ### IMPORT CLASS FROM FILE
+                try:
+                    builder_module = importlib.import_module(f"runpod_inference.{model_config['inference_script']}")
+                except:
+                    print(f"[Error] Unable to import module for `runpod_inference.{model_config['inference_script']}`.")
+                    continue
+    
                 ### TEST API
-                if self.Utilities.test_api_up(self.instruct_model_url):
-                    self.Instruct = LLaVA_Vision(self)
-                    print(f"=> Instruct Model: {self.instruct_model_name}")
-                else:
-                    self.Instruct = OpenAI_Instruct(self)
-                    print(f"=> Instruct Model: {self.gpt_model} (failed to connect to {self.instruct_model_name})")
+                model_url = f"https://{runpod_id}-{runpod_port}.proxy.runpod.net"
+                if not self.Utilities.test_api_up(model_url):
+                    print(f"[Error] API is not responding to {model_attribute}.")
+                    continue
+                model_config["model_url"] = model_url # add only when successful
+    
+                ### SAVE RESPONDING ENDPOINTS AS SUBMODULE
+                builder_class = getattr(builder_module, builder_class_name)
+                instance = builder_class(self, model_config)
+                setattr(self, model_attribute, instance)
+                print(f"[Success] Connected to your {model_attribute} API.")
+
+
+
+
+
 
 
     
