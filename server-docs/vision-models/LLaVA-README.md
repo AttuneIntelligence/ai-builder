@@ -20,7 +20,7 @@ This One-Click-Template is built off the [Docker Image for LLaVA](https://github
 ### Available Models
 
 > [!IMPORTANT]
-> If you select a 13B or larger model, CUDA will result in OOM errors with a GPU that has less than 48GB of VRAM. At least a single A6000 or larger is recommended for 13B models
+> If you select a 13B or larger model, CUDA will result in OOM errors with a GPU that has less than 48GB of VRAM. At least a single A6000 or larger is recommended for 13B models. When running the 34B model, 96GB of VRAM or larger is recommended.
 
 You can add an environment called MODEL to your Docker container to specify the model that should be downloaded. If the `MODEL` environment variable is not set, the model will default to the 7B parameter `Mistral-7B` implementation of `LLaVA-1.6`.
 
