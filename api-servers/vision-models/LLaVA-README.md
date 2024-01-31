@@ -1,10 +1,11 @@
 # LLAVA Vision by Attune Engineering
 ---
 
-## ONE-CLICK TEMPLATE
+## ONE-CLICK TEMPLATES
 Deploy the model to Runpod to host your own inference-ready endpoint with multimodal capabilities.
 
-#### *[Template Link](https://runpod.io/gsc?template=aajbtuv52q&ref=zdeyr0zx)*
+#### *[LLAVA v1.6 34B Template](https://runpod.io/gsc?template=9y7qxeilsh&ref=zdeyr0zx)*
+#### *[LLAVA v1.6 7B Template](https://runpod.io/gsc?template=aajbtuv52q&ref=zdeyr0zx)*
 
 *Use Attune Engineering's [Runpod Affiliate Link](https://runpod.io?ref=zdeyr0zx) affiliate link to sign up for Runpod and help support our team to keep building and sharing systems with AI with free GPU credits!*
 

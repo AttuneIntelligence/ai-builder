@@ -10,7 +10,7 @@
             ]
         },
         "GPT4_Vision": {
-            "model_name": "gpt-4-1106-vision-preview",
+            "model_name": "gpt-4-vision-preview",
             "inference_script": "openai_gpt4_vision",
             "builder_class": "OpenAI_Vision",
             "ask_inputs": [
@@ -23,7 +23,7 @@
     "Runpod": {
         "Mixtral8x7B_Instruct": {
             "model_name": "mistralai/Mixtral-8x7B-Instruct-v0.1",
-            "runpod_id": "vqa7ptq44dz3ih",
+            "runpod_id": "sxdn9imra96od2",
             "runpod_port": "8080",
             "server_template": "server-docs/instruct-models/Mixtral8x7B_Instruct_README.md",
             "inference_script": "mixtral8x7b_instruct",
@@ -36,7 +36,7 @@
         },
         "LLaVA_7B_Vision": {
             "model_name": "liuhaotian/llava-v1.6-mistral-7b",
-            "runpod_id": "",
+            "runpod_id": "96vv2ghebi762o",
             "runpod_port": "5000",
             "server_template": "server-docs/vision-models/LLaVA_README.md",
             "inference_script": "llava_vision",
@@ -46,7 +46,7 @@
                 {"name": "image_path", "required": true},
                 {"name": "system_prompt", "required": false}
             ],
-            "attempt": true
+            "attempt": false
         },
         "LLaVA_34B_Vision": {
             "model_name": "liuhaotian/llava-v1.6-34b",

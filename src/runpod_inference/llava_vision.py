@@ -19,7 +19,7 @@ class LLaVA_Vision:
             system_prompt=None):
         ### SEND TO RUNPOD LLAVA MODEL
         payload = {
-            'model_path': self.model_config["model_url"],
+            'model_path': f"https://{runpod_id}-{runpod_port}.proxy.runpod.net",
             'image_base64': self.builder.Utilities.encode_image_to_base64(image_path),
             'prompt': f"{question}",
             'temperature': 0.1,

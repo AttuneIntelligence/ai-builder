@@ -4,8 +4,7 @@ from openai import OpenAI
 import requests
 from math import ceil
 import math
-from PIL import Image
-from io import BytesIO
+from IPython.display import Image, display
 
 sys.path.append('/workspace/ai-builder/src')
 from bin.utilities import *
@@ -20,13 +19,18 @@ class OpenAI_Vision:
     def ask(self,
             question, 
             image_path,
-            system_prompt=None):
+            system_prompt=None,
+            return_messages=False):
         timer = Timer()
 
         ### CREATE PROMPT
         messages = self.builder.ContextEngineering.vision_prompt_template(question, system_prompt=system_prompt)
         b64_image = self.builder.Utilities.encode_image_to_base64(image_path)
-
+        if self.builder.verbose:
+            for message in messages:
+                lab_print(message)
+            display(Image(data=base64.b64decode(b64_image)))
+                
         try:
             ### ATTEMPT THE API CALL
             headers = {
@@ -41,7 +45,7 @@ class OpenAI_Vision:
                         "content": [
                             {
                                 "type": "text",
-                                "text": question
+                                "text": str(messages)
                             },
                             {
                                 "type": "image_url",
@@ -56,15 +60,29 @@ class OpenAI_Vision:
                 "max_tokens": self.builder.max_tokens
             }
             response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
-            image_description = response.json()["choices"][0]["message"]["content"]
-
-            ### TRACK COST
+            text_response = response.json()["choices"][0]["message"]["content"]
+            response_message = {
+                "role": "assistant",
+                "content": text_response
+            }
+            if self.builder.verbose:
+                lab_print(response_message)
+            messages.append(response_message)
+            
+            ### TRACK COMPLETION METADATA
             time_taken = timer.get_elapsed_time()
-            vision_cost = self.calculate_vision_pricing(b64_image)
-            print(f'Total time taken for OpenAI API call: {time_taken} seconds')
-            print(f'Total cost for GPT-Vision API call: ${vision_cost}')
-            return image_description
-        
+            metadata = self.builder.Utilities.compile_metadata(
+                ingress=messages,
+                egress=text_response, 
+                time_taken=time_taken, 
+                model_name=self.model_config["model_name"],
+                b64_image = b64_image
+            )
+            if return_messages:
+                return messages, metadata
+            else:
+                return text_response, metadata
+                
         except Exception as e:
             if "Rate limit reached" in str(e):
                 print("Rate Limited by GPT-4-vision!")
@@ -73,29 +91,3 @@ class OpenAI_Vision:
                 print(f"Error running GPT-4-vision: {str(e)}")
                 return None
 
-    def calculate_vision_pricing(self, 
-                                 base64_image_data):
-        ### CONSTANTS
-        TILE_SIZE = 512
-        BASE_TOKENS = 85
-        TOKENS_PER_TILE = 170
-        PRICE_PER_1K_TOKENS = 0.01
-
-        ### DECODE BASE64 IMAGE DATA
-        image_bytes = base64.b64decode(base64_image_data)
-        image = Image.open(BytesIO(image_bytes))
-        width, height = image.size
-
-        ### NUMBER OF TILES NEEDED
-        tiles_x = math.ceil(width / TILE_SIZE)
-        tiles_y = math.ceil(height / TILE_SIZE)
-        total_tiles = tiles_x * tiles_y
-
-        ### TOTAL TOKENS
-        tile_tokens = total_tiles * TOKENS_PER_TILE
-        total_tokens = BASE_TOKENS + tile_tokens
-
-        ### TOTAL COST
-        total_price = (total_tokens / 1000) * PRICE_PER_1K_TOKENS
-
-        return total_price

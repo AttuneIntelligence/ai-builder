@@ -9,6 +9,10 @@ import importlib.util
 import pkgutil
 import tiktoken
 from transformers import AutoTokenizer
+from PIL import Image as PIL_Image
+from io import BytesIO
+from math import ceil
+import math
 
 class Utilities:
     def __init__(self,
@@ -50,11 +54,12 @@ class Utilities:
                          ingress,
                          egress,
                          time_taken,
-                         model_name):
+                         model_name,
+                         b64_image=None):
         ### CALCULATE COST
         if "gpt" in model_name:
             tokenizer = tiktoken.get_encoding("cl100k_base")
-            cost = self.openai_costs(ingress, egress, model_name)
+            cost = self.openai_costs(ingress, egress, model_name, b64_image)
         else:
             tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
             cost = None
@@ -80,14 +85,15 @@ class Utilities:
     def openai_costs(self,
                      ingress,
                      egress,
-                     model):
+                     model,
+                     b64_image):
         tokenizer = tiktoken.get_encoding("cl100k_base")
         
         ### INGRESS IS MESSAGE LIST / EGRESS IS RESPONSE STRING
         ingress_tokens = sum([len(tokenizer.encode(message["content"])) for message in ingress])
         egress_tokens = len(tokenizer.encode(egress))
                             
-        if model in ["gpt-4-0125-preview", "gpt-4-1106-preview", "gpt-4-1106-vision-preview"]:
+        if model in ["gpt-4-0125-preview", "gpt-4-1106-preview", "gpt-4-vision-preview"]:
             prompt_cost = (ingress_tokens / 1000)*0.01
             response_cost = (egress_tokens / 1000)*0.03
 
@@ -106,8 +112,41 @@ class Utilities:
         elif model in ["gpt-3.5-turbo-instruct"]:
             prompt_cost = (egress_tokens / 1000)*0.0015
             response_cost = (egress_tokens / 1000)*0.0020
-        
-        return round(prompt_cost+response_cost, 4)
+
+        ### ADD VISION COST IF NECESSARY
+        if b64_image:
+            image_cost = self.calculate_vision_pricing(b64_image)
+        else:
+            image_cost = 0
+            
+        return round(prompt_cost+response_cost+image_cost, 4)
+
+    def calculate_vision_pricing(self, 
+                                 base64_image_data):
+        ### CONSTANTS
+        TILE_SIZE = 512
+        BASE_TOKENS = 85
+        TOKENS_PER_TILE = 170
+        PRICE_PER_1K_TOKENS = 0.01
+
+        ### DECODE BASE64 IMAGE DATA
+        image_bytes = base64.b64decode(base64_image_data)
+        image = PIL_Image.open(BytesIO(image_bytes))
+        width, height = image.size
+
+        ### NUMBER OF TILES NEEDED
+        tiles_x = math.ceil(width / TILE_SIZE)
+        tiles_y = math.ceil(height / TILE_SIZE)
+        total_tiles = tiles_x * tiles_y
+
+        ### TOTAL TOKENS
+        tile_tokens = total_tiles * TOKENS_PER_TILE
+        total_tokens = BASE_TOKENS + tile_tokens
+
+        ### TOTAL COST
+        total_price = (total_tokens / 1000) * PRICE_PER_1K_TOKENS
+
+        return total_price
 
 
 #######################
