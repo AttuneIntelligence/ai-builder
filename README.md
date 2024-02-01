@@ -208,9 +208,9 @@ This project is licensed under the terms of the [GNU General Public License](htt
 
 This _GNU General Public License version 3 (GPL-3)_ is a free, copyleft license for software and other kinds of works, published by the Free Software Foundation (FSF) in 2007. It is designed to ensure that software remains free and open, allowing users to run, study, share, and modify the software while allowing provisions for source-code that is sold for a fee.
 
-The license is clear that the definition of _**free**_ is ~_free to use once accessed_~, not explicitly free to access. This means that a fee may be charged to grant access to original or derivative GPT-3-licensed works, however complete source code must be provided with licensed access.  
+The license is clear that the definition of _**free**_ is free to use once accessed, not explicitly free to access.
 
-This means that once you have purchased the code from Attune Engineering, you are free to do with it as you wish - be it share or modify. The stipulation to this, however, is that all forthcoming versions of the software must also be made available  as complete source code with an accompyaning GPL license for all downstream applications.
+This means that once you have purchased any code from Attune Engineering, you are free to do with it as you wish - be it share or modify. The stipulation to this, however, is that all forthcoming versions of the software must also be made available as complete source code with an accompyaning GPL license for all downstream applications. The aim of this license is not to prohibit the sale of derivative works, but rather to ensure free and open access to the source code provided under the _GPL-3_ license.
 
 The rights granted to you as a purchaser of Attune Engineering's gated source code (or that which has been made available as open source) are as follows:
 
@@ -224,7 +224,7 @@ The rights granted to you as a purchaser of Attune Engineering's gated source co
 
 ### Author's Note:
 
-Attune Engineering is committed to distributing and supporting free and open source software development. If we envision a future where AI is democratized and open source, it's best to start building that vision now.
+Attune Engineering is committed to distributing and supporting free and open source software development. If we envision a future where both the LLMs and the accompanying software architectures are democratized and open source, it's best to start building that vision now.
 
 > "Popularity is tempting, and it is easy for a library developer to rationalize the idea that boosting the popularity of that one library is what the community needs above all...
 >
