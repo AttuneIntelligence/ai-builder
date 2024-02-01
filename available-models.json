@@ -23,7 +23,7 @@
     "Runpod": {
         "Mixtral8x7B_Instruct": {
             "model_name": "mistralai/Mixtral-8x7B-Instruct-v0.1",
-            "runpod_id": "sxdn9imra96od2",
+            "runpod_id": "6izob68vehxyx3",
             "runpod_port": "8080",
             "server_template": "server-docs/instruct-models/Mixtral8x7B_Instruct_README.md",
             "inference_script": "mixtral8x7b_instruct",
@@ -36,7 +36,7 @@
         },
         "LLaVA_7B_Vision": {
             "model_name": "liuhaotian/llava-v1.6-mistral-7b",
-            "runpod_id": "96vv2ghebi762o",
+            "runpod_id": "ow6i5lzng4kpah",
             "runpod_port": "5000",
             "server_template": "server-docs/vision-models/LLaVA_README.md",
             "inference_script": "llava_vision",
@@ -46,7 +46,7 @@
                 {"name": "image_path", "required": true},
                 {"name": "system_prompt", "required": false}
             ],
-            "attempt": false
+            "attempt": true
         },
         "LLaVA_34B_Vision": {
             "model_name": "liuhaotian/llava-v1.6-34b",

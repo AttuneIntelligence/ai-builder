@@ -19,26 +19,6 @@ class Utilities:
                  builder):
         self.builder = builder
             
-    ###################
-    ### API TESTING ###
-    ###################
-    def test_api_up(self,
-                    url):
-        ### TEST RUNPOD API STATUS
-        test_payload = json.dumps({"inputs": "Test", "parameters": {"max_new_tokens": 1, "do_sample": False}})
-    
-        try:
-            response = requests.post(url, data=test_payload, headers={'Content-Type': 'application/json'})
-            if response.status_code == 200:
-                # print("API is up and running.")
-                return True
-            else:
-                # print(f"API is not responding as expected. Status Code: {response.status_code}")
-                return False
-        except requests.exceptions.RequestException as e:
-            # print(f"Error while checking API status: {e}")
-            return False
-            
     ####################
     ### VISION TOOLS ###
     ####################

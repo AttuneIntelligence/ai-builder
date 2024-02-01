@@ -108,3 +108,26 @@ class Mixtral8x7B_Instruct:
                 formatted_string += BOS_token
                 formatted_string += B_INST
         return formatted_string
+
+    ###################
+    ### API TESTING ###
+    ###################
+    def test_api_up(self,
+                    url,
+                    model_name):
+        ### TEST RUNPOD API STATUS
+        test_payload = json.dumps({"inputs": "Test", "parameters": {"max_new_tokens": 1, "do_sample": False}})
+    
+        try:
+            response = requests.post(f"{url}/generate", data=test_payload, headers={'Content-Type': 'application/json'})
+            if response.status_code == 200:
+                # print("API is up and running.")
+                return True
+            else:
+                # print(f"API is not responding as expected. Status Code: {response.status_code}")
+                return False
+        except requests.exceptions.RequestException as e:
+            # print(f"Error while checking API status: {e}")
+            return False
+
+

@@ -68,7 +68,8 @@ class AIBuilder:
                 runpod_id = model_config.get("runpod_id", None)
                 runpod_port = model_config.get("runpod_port", None)
                 builder_class_name = model_config.get("builder_class", None)
-                if None in [model_name, runpod_id, runpod_port, builder_class_name]:
+                inference_script_name = model_config.get("inference_script", None)
+                if None in [model_name, runpod_id, runpod_port, builder_class_name, inference_script_name]:
                     print(f"[Error] Missing required model configuration parameters for {module_name}.")
                     continue
                 
@@ -78,17 +79,19 @@ class AIBuilder:
                 except:
                     print(f"[Error] Unable to import module for `runpod_inference.{model_config['inference_script']}`.")
                     continue
-    
+
+                ### GET THE CLASS RELATING TO THE MODEL
+                builder_class = getattr(builder_module, builder_class_name)
+                instance = builder_class(self, model_config)
+                
                 ### TEST API
                 model_url = f"https://{runpod_id}-{runpod_port}.proxy.runpod.net"
-                if not self.Utilities.test_api_up(model_url):
+                if not instance.test_api_up(model_url, model_name):
                     print(f"[Error] API is not responding to {model_attribute}.")
                     continue
                 model_config["model_url"] = model_url # add only when successful
     
-                ### SAVE RESPONDING ENDPOINTS AS SUBMODULE
-                builder_class = getattr(builder_module, builder_class_name)
-                instance = builder_class(self, model_config)
+                ### SAVE RESPONDING ENDPOINTS AN ATTRIBUTE OF AIBUILDER
                 setattr(self, model_attribute, instance)
                 print(f"[Success] Connected to your {model_attribute} API.")
 
