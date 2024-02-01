@@ -44,8 +44,8 @@
     <img src="https://img.shields.io/github/last-commit/attuneengineering/ai-builder" alt="GitHub last commit">
   </a>
   <!-- License -->
-  <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License" />
+  <a href="https://www.gnu.org/licenses/gpl-3.0">
+      <img src="https://img.shields.io/badge/license-GPL%20v3-blue.svg" alt="License" />
   </a>
 </div>
 
@@ -197,7 +197,7 @@ This is all that is required to then instantiate the `AIBuilder` class, as defin
   ### LOCALLY BUILT IMAGE
   source /workspace/ai-builder/bin/jupyter-lab.sh
   ```
-Check out `dev.ipynb` to get started.
+Check out `dev.ipynb` to get started. To see further documentation about the Python source code contained within the instantiated `AIBuilder` class, see `src/README.md`.
 
 ---
 ---
