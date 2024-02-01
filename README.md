@@ -145,9 +145,8 @@ Once working in Gitpod, you can launch the Jupyter Lab environment with the foll
     ```bash
     docker run -it --rm -p 8888:8888 -p 8080:8080 $REGISTRY_IMAGE:main
     ```
-    By default, this container will open an interactive bash environment. Two possible flags can be appended...
+    By default, this container will open an interactive bash environment. If you'd rather work in Jupyter, the following flag can be appended...
       * `--launch-jupyter`; launch a Jupyter Lab server on port 8888.
-      * `--launch-streamlit`; launch a streamlit web interface on port 8080.
 
 5. _optional_ Push the Docker image to your own Github Container Registry.
     This will require you to have a personal access token with `read:packages` and `write:packages` permissions. You can create a token [here](https://github.com/settings/tokens). Note that you'll also need to either fork the `AI Builder` repository or create a new repository in your own account.

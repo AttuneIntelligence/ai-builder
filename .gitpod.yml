@@ -1,13 +1,13 @@
 image: ghcr.io/attuneengineering/ai-builder:main
 ports:
   - port: 8888
-    onOpen: open-browser
+    onOpen: ignore
   - port: 5000
     onOpen: ignore
 tasks:
   - name: "jupyter"
     command: >
       git remote set-url origin https://$GITHUB_TOKEN@github.com/AttuneEngineering/ai-builder.git &&
-      echo "alias launch-jupyter='source /workspace/ai-builder/bin/gitpod-jupyter-lab.sh'" >> ~/.bashrc &&
+      echo "alias launch-jupyter='source /workspace/ai-builder/bin/jupyter-lab.sh'" >> ~/.bashrc &&
       source ~/.bashrc &&
       cowsay namaste 🙏
