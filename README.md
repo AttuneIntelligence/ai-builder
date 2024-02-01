@@ -65,11 +65,11 @@
 The `AI Builder` repository is a template from which you can engineer your own application with open source generative AI. This codebase forms the cornerstone of Attune Engineering's [collection of private repositories](https://attuneengineering.com/source-code.html) for designing software architectures with Large Language Models. 
 
 Within this repository you'll find:
-  * **Server deployments** for renting <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> GPU servers and serving open-source LLMs;
+  * **Server templates** for renting <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> GPU servers and serving open-source LLMs;
   * **Inference scripts** for communicating with your API endpoints and integrating your models into your software;
   * **DevOps configurations** for managing development environments and workflow automations with Docker and Gitpod;
-  * **Multimodal templates** for running LLMs for image comprehension as an open alternative to GPT-4-Vision;
-  * **Streamlit frontends** for testing your creations locally in your browser.
+  * **Multimodal vision** for unlocking open source image comprehension as an open alternative to GPT-4-Vision;
+  * **LLM comparisons** to perform side-by-side inference across the suite of open source options and GPT-4.
 
 This toolkit-based approach to interfacing with LLMs makes it easier to build complex architectures around your own fine-tuned open source LLMs. While OpenAI's API will continue to be the cheapest option for most all use cases - _because_ they can serve hundreds of thousands of people and amortise costs over concurrent requests - there are a few reasons why you may want to consider deploying your own API... if you
   * Cannot send data to OpenAI for privacy reasons;  _or_
@@ -95,7 +95,7 @@ This toolkit-based approach to interfacing with LLMs makes it easier to build co
 The largest barrier-to-entry for working with open source LLMs lies in provisioning your model to GPUs that can be made available at an API. <a href="https://runpod.io?ref=zdeyr0zx" target="_blank">Runpod</a> simplifies much of this process, and we have created a collection of ready-to-deploy templates to get you set up with an API endpoint in minutes.
   <ul>
     <li>See the complete list of server templates <a href="https://attuneengineering.com/models" target="_blank">here</a>.</li>
-    <li>Includes Mixtral 8x7B, Llama 2, LLaVA Vision, and a plethora of others...</li>
+    <li>Includes Mixtral 8x7B, LLaVA Vision, and a plethora of others...</li>
     <li>Also includes models fine-tuned by Attune Engineering for multimodal document processing, function calling, and more!</li>
     <li>Find all of the README files in <code>server-docs/</code>.</li>
   </ul>
