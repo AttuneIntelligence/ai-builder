@@ -59,6 +59,7 @@
 </div>
 
 >“Intelligence is the art in the eye of the beholder. How do you now that I am not a cyborg? How do I know that you are not a cyborg? The answer is we Turing test each other unconsciously at sufficient depth to satisfy ourselves. It becomes moot, or it is becoming moot.”
+>
 >~ Terence McKenna
 
 ---
