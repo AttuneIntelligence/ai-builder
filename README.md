@@ -202,9 +202,7 @@ Check out `dev.ipynb` to get started. To see further documentation about the Pyt
 
 # License
 
-This project is licensed under the terms of the [GNU General Public License](https://github.com/AttuneEngineering/ai-builder/blob/main/LICENSE).
-
-This license designed to ensure that software remains free and open, allowing users to run, study, share, and modify the software while allowing provisions for source-code that is sold for a fee. The license is clear that the definition of _**free**_ is free to use once accessed, not explicitly free to access.
+This project is licensed under the terms of the [GNU General Public License](https://github.com/AttuneEngineering/ai-builder/blob/main/LICENSE). This license is designed to ensure that software remains free and open, allowing users to run, study, share, and modify the software while allowing provisions for source-code that is sold for a fee. The license is clear that the definition of _**free**_ is free to use once accessed, not explicitly free to access.
 
 This means that once you have purchased any code from Attune Engineering, you are free to do with it as you wish - be it share or modify. The stipulation to this, however, is that all forthcoming versions of the software must also be made available as complete source code with an accompyaning GPL license for all downstream applications. The aim of this license is not to prohibit the sale of derivative works, but rather to ensure free and open access to the source code provided under the _GPL-3_ license.
 
