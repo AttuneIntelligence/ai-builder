@@ -199,19 +199,35 @@ This is all that is required to then instantiate the `AIBuilder` class, as defin
   ```
 Check out `dev.ipynb` to get started.
 
-### Testing with Streamlit
-
-If you're looking to toy around with a web interface deployed to your local host via the Docker environment, you can launch the Streamlit app with the following...
-  ```bash
-  source /workspace/ai-builder/bin/launch-streamlit.sh
-  ```
-
 ---
 ---
 
 # License
 
-This project is licensed under the terms of the [MIT License](https://github.com/AttuneEngineering/ai-builder/blob/main/LICENSE).
+This project is licensed under the terms of the [GNU General Public License](https://github.com/AttuneEngineering/ai-builder/blob/main/LICENSE).
+
+This _GNU General Public License version 3 (GPL-3)_ is a free, copyleft license for software and other kinds of works, published by the Free Software Foundation (FSF) in 2007. It is designed to ensure that software remains free and open, allowing users to run, study, share, and modify the software while allowing provisions for source-code that is sold for a fee.
+
+The license is clear that the definition of _**free**_ is _free to use_, while still allowing a fee to be collected for distribution of the source code.
+
+This means that once you have purchased the code from Attune Engineering, you are free to do with it as you wish - be it share or modify. The stipulation to this, however, is that all forthcoming versions of the software must also be made available under the GPL license. In brief, the rights granted to you as a purchaser of Attune Engineering's source code - or by accessing that which has been made open source - are as follows:
+
+- **Freedom to Run**: The license grants users the freedom to run the program for any purpose.
+- **Freedom to Modify**: Users can modify the software or any portion of it, thus allowing for the creation of derivatives that must also be licensed under GPL-3.
+- **Freedom to Distribute**: Users can distribute copies of the original software to others, with or without modifications, under the same GPL-3 license terms - _See Discord for community stipulations_.
+- **Source Code**: The license requires that all distributed software, including modifications and derived works, must be made available in source code form.
+- **Patent Rights**: GPL-3 includes an express grant of patent rights from contributors to users, protecting users from patent litigation.
+- **Tivoization**: GPL-3 addresses "Tivoization", ensuring that if the software is used in consumer products, users can still modify the software on those devices.
+- **Compatibility with Other Licenses**: GPL-3 provides certain provisions for combining or linking with code under certain other licenses.
+
+### Author's Note:
+
+Attune Engineering is committed to distributing and supporting free and open source software development. If we envision a future where AI is democratized and open source, it's best to start building that vision now.
+
+> "Popularity is tempting, and it is easy for a library developer to rationalize the idea that boosting the popularity of that one library is what the community needs above all...
+>
+> But we should not listen to these temptations, because we can achieve much more if we stand together. We free software developers should support one another. By releasing libraries that are limited to free software only, we can help each other's free software packages outdo the proprietary counterparts. The whole free software movement will have more popularity, because free software as a whole will stack up better against the competition."
+- _[Why you shouldn't use the Lesser GPL for your next library](https://www.gnu.org/licenses/why-not-lgpl.html)_
 
 Happy Hacking!
 
