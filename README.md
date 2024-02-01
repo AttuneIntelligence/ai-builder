@@ -78,7 +78,8 @@ Within this repository you'll find:
 This toolkit-based approach to interfacing with LLMs makes it easier to build complex architectures around your own fine-tuned open source LLMs. While OpenAI's API will continue to be the cheapest option for most all use cases - _because_ they can serve hundreds of thousands of people and amortise costs over concurrent requests - there are a few reasons why you may want to consider deploying your own API... if you
   * Cannot send data to OpenAI for privacy reasons;  _or_
   * Have a custom fine-tuned model you'd like to work with; _or_
-  * Intend to build an application that can scale without being limited by OpenAI's API...
+  * Intend to build an application that can scale without being limited by OpenAI's API; _or_
+  * You are passionate about decentralization democratization of AI systems...
 
 ..._**this**_ is where you may want to rent a GPU server, set up your own API, and make queries to that API. If you're interested in this approach, we've created a collection of templates for you to hit the ground running!
 
