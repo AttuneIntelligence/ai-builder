@@ -141,7 +141,7 @@ Once working in Gitpod, you can launch the Jupyter Lab environment with the foll
 
 4. Run the Docker container.
     ```bash
-    docker run -it --rm -p 8888:8888 -p 8080:8080 $REGISTRY_IMAGE:main
+    docker run -it --rm -p 8888:8888 $REGISTRY_IMAGE:main
     ```
     By default, this container will open an interactive bash environment. If you'd rather work in Jupyter, the following flag can be appended...
       * `--launch-jupyter`; launch a Jupyter Lab server on port 8888.
