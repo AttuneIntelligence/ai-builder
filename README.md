@@ -208,9 +208,11 @@ This project is licensed under the terms of the [GNU General Public License](htt
 
 This _GNU General Public License version 3 (GPL-3)_ is a free, copyleft license for software and other kinds of works, published by the Free Software Foundation (FSF) in 2007. It is designed to ensure that software remains free and open, allowing users to run, study, share, and modify the software while allowing provisions for source-code that is sold for a fee.
 
-The license is clear that the definition of _**free**_ is _free to use_, while still allowing a fee to be collected for distribution of the source code.
+The license is clear that the definition of _**free**_ is ~_free to use once accessed_~, not explicitly free to access. This means that a fee may be charged to grant access to original or derivative GPT-3-licensed works, however complete source code must be provided with licensed access.  
 
-This means that once you have purchased the code from Attune Engineering, you are free to do with it as you wish - be it share or modify. The stipulation to this, however, is that all forthcoming versions of the software must also be made available under the GPL license. In brief, the rights granted to you as a purchaser of Attune Engineering's source code - or by accessing that which has been made open source - are as follows:
+This means that once you have purchased the code from Attune Engineering, you are free to do with it as you wish - be it share or modify. The stipulation to this, however, is that all forthcoming versions of the software must also be made available  as complete source code with an accompyaning GPL license for all downstream applications.
+
+The rights granted to you as a purchaser of Attune Engineering's gated source code (or that which has been made available as open source) are as follows:
 
 - **Freedom to Run**: The license grants users the freedom to run the program for any purpose.
 - **Freedom to Modify**: Users can modify the software or any portion of it, thus allowing for the creation of derivatives that must also be licensed under GPL-3.
