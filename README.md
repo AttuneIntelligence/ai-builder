@@ -74,8 +74,7 @@ Within this repository you'll find:
 This toolkit-based approach to interfacing with LLMs makes it easier to build complex architectures around your own fine-tuned open source LLMs. While OpenAI's API will continue to be the cheapest option for most all use cases - _because_ they can serve hundreds of thousands of people and amortise costs over concurrent requests - there are a few reasons why you may want to consider deploying your own API... if you
   * Cannot send data to OpenAI for privacy reasons;  _or_
   * Have a custom fine-tuned model you'd like to work with; _or_
-  * Intend to build an application that can scale without being limited by OpenAI's API; _or_
-  * Want to build a multi-model architecture across your own GPU hardware...
+  * Intend to build an application that can scale without being limited by OpenAI's API...
 
 ..._**this**_ is where you may want to rent a GPU server, set up your own API, and make queries to that API. If you're interested in this approach, we've created a collection of templates for you to hit the ground running!
 
@@ -96,8 +95,7 @@ The largest barrier-to-entry for working with open source LLMs lies in provision
   <ul>
     <li>See the complete list of server templates <a href="https://attuneengineering.com/models" target="_blank">here</a>.</li>
     <li>Includes Mixtral 8x7B, LLaVA Vision, and a plethora of others...</li>
-    <li>Also includes models fine-tuned by Attune Engineering for multimodal document processing, function calling, and more!</li>
-    <li>Find all of the README files in <code>server-docs/</code>.</li>
+    <li>Find a README for each server template in <code>server-docs/</code>.</li>
   </ul>
 
 ---
